@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour
+[Serializable]
+public class Ingredient
 {
+    public ingredient type;
+    public preperation prep;
     public enum ingredient
     {
         Herbs,
