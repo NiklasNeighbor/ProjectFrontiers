@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredieant : MonoBehaviour
+public class Ingredient : MonoBehaviour
 {
     public enum ingredient
     {
