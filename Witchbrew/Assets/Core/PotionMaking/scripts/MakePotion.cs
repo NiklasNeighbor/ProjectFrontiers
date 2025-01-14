@@ -22,4 +22,11 @@ public class MakePotion : MonoBehaviour
 
     [Tooltip("List containing all the recipes. change this.")]
     public List<recipe> potions;
+
+
+
+    void Update()
+    {
+
+    }
 }
