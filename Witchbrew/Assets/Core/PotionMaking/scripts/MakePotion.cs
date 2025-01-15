@@ -15,12 +15,8 @@ public class recipe
 
 public class MakePotion : MonoBehaviour
 {
-    [Tooltip("Dont change this! use list below!")]
-    public Ingredient Ingredient1;
-    [Tooltip("Dont change this! use list below!")]
-    public Ingredient Ingredient2;
-    [Tooltip("Dont change this! use list below!")]
-    public Ingredient Ingredient3;
+    [Tooltip("The Ingredients that were already added into the pot")]
+    public Ingredient[] ingredients = new Ingredient[3];
 
     [Tooltip("List containing all the recipes. change this.")]
     public List<recipe> potions;
@@ -37,7 +33,7 @@ public class MakePotion : MonoBehaviour
 
     public bool HasIngredients()
     {
-        if (Ingredient1 != null && Ingredient2 != null && Ingredient3 != null)
+        if (ingredients[0].type != Ingredient.ingredient.None && ingredients[1].type != Ingredient.ingredient.None && ingredients[2].type != Ingredient.ingredient.None)
         {
             return true;
         }
@@ -48,11 +44,69 @@ public class MakePotion : MonoBehaviour
     {
         foreach (recipe recipe in potions)
         {
-            bool HasIngredient1;
-            bool HasIngredient2;
-            bool HasIngredient3;
+            bool HasIngredient1 = false;
+            bool HasIngredient2 = false;
+            bool HasIngredient3 = false;
 
-            //TODO: check recipe to see if it has each ingredient
+            if (CheckForIngredient(recipe.FirstIngredient) && !HasIngredient1)
+            {
+                HasIngredient1 = true;
+            }
+
+            if (CheckForIngredient(recipe.SecondIngredient) && !HasIngredient2)
+            {
+                HasIngredient2 = true;
+            }
+
+            if (CheckForIngredient(recipe.ThirdIngredient) && !HasIngredient3)
+            {
+                HasIngredient3 = true;
+            }
+
+            //What happens when the ingredients were correct
+            if(HasIngredient1 && HasIngredient2 && HasIngredient3)
+            {
+
+                Debug.Log("created potion: " + recipe.RecipeName);
+                Debug.Log("Ingredients: " + ingredients[0].prep + " " + ingredients[0].type + ", " + ingredients[1].prep + " " + ingredients[1].type + ", " + ingredients[2].prep + " " + ingredients[2].type);
+
+                PotionSuccess();
+
+                ingredients[0].type = Ingredient.ingredient.None;
+                ingredients[1].type = Ingredient.ingredient.None;
+                ingredients[2].type = Ingredient.ingredient.None;
+                return;
+            }
         }
+        PotionFail();
+
+        ingredients[0].type = Ingredient.ingredient.None;
+        ingredients[1].type = Ingredient.ingredient.None;
+        ingredients[2].type = Ingredient.ingredient.None;
+    }
+
+    public bool CheckForIngredient(Ingredient RightIngredient)
+    {
+        foreach(Ingredient ingredient in ingredients)
+        {
+            if ((ingredient.type == RightIngredient.type) && (ingredient.prep == RightIngredient.prep))
+            {
+                
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void PotionSuccess()
+    {
+        //Insert code for failed recipe here
+    }
+
+    public void PotionFail()
+    {
+        Debug.Log("No Potion with those ingredients found!");
+
+        //Insert code for failed recipe here
     }
 }
