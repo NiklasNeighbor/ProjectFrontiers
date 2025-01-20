@@ -109,4 +109,22 @@ public class MakePotion : MonoBehaviour
 
         //Insert code for failed recipe here
     }
+
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        MonoIngredient NewIngredient = other.gameObject.GetComponent<MonoIngredient>();
+        
+        for (int i = 0; i < ingredients.Length; i++)
+        {
+            if (ingredients[i].type == Ingredient.ingredient.None) 
+            {
+                Debug.Log("Added ingredient to: " + ingredients[i]);
+                ingredients[i] = NewIngredient.Ingredient;
+                Destroy(other.gameObject);
+                return;
+            }
+        }
+    }
 }
