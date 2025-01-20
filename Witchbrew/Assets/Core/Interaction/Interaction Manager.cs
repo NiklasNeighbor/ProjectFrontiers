@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
@@ -32,12 +33,26 @@ public class InteractionManager : MonoBehaviour
             }
         }
 
+    }
+
+    void FixedUpdate()
+    {
         if (isHolding && pickedObject != null)
         {
             UpdateJointTargetPosition();
             CalculateMomentum();
         }
     }
+
+    void LateUpdate()
+    {
+        if (isHolding && pickedObject != null)
+        {
+            // Recalculate target anchor based on the latest camera position
+            configurableJoint.connectedAnchor = CalculateTargetAnchor();
+        }
+    }
+
 
     void TryPickupObject()
     {
@@ -81,36 +96,49 @@ public class InteractionManager : MonoBehaviour
             previousVelocity = pickedRigidbody.velocity;
 
             isHolding = true;
-        }
+        }  
     }
 
     void UpdateJointTargetPosition()
     {
-        if (configurableJoint != null)
+        if (configurableJoint != null && pickedObject != null)
         {
-            configurableJoint.connectedAnchor = playerCamera.transform.position + playerCamera.transform.forward * pickupDistance;
+            Vector3 targetPosition = CalculateTargetAnchor();
+
+            // Smoothly move the object to the target position
+            pickedRigidbody.MovePosition(Vector3.Lerp(
+            pickedObject.transform.position,
+            targetPosition,
+            Time.fixedDeltaTime * .1f
+            ));
+
+            // Update joint anchor for physics consistency
+            configurableJoint.connectedAnchor = targetPosition;
         }
+    }
+    Vector3 CalculateTargetAnchor()
+    {
+        // Calculate the desired anchor position relative to the camera
+        return playerCamera.transform.position + playerCamera.transform.forward * pickupDistance;
     }
 
     void DropObject()
     {
         if (pickedObject != null && configurableJoint != null)
         {
-            // Preserve velocity and angular velocity
-            pickedRigidbody.velocity = previousVelocity;
-            pickedRigidbody.angularVelocity = pickedRigidbody.angularVelocity;
-
             // Remove the ConfigurableJoint component
             Destroy(configurableJoint);
             configurableJoint = null;
 
-            // Re-enable gravity on the Rigidbody
+            // Re-enable gravity
             pickedRigidbody.useGravity = true;
 
-            // Clear references and reset the state
+            // Apply the last calculated momentum to the object's Rigidbody
+            pickedRigidbody.velocity = previousVelocity;
+
+            // Clear references and reset state
             pickedObject = null;
             pickedRigidbody = null;
-
             isHolding = false;
         }
     }
@@ -118,7 +146,7 @@ public class InteractionManager : MonoBehaviour
     void CalculateMomentum()
     {
         // Update previous velocity based on the object's position and velocity
-        Vector3 currentPosition = pickedObject.transform.position;
+        Vector3 currentPosition = playerCamera.transform.position;
         Vector3 currentVelocity = (currentPosition - previousPosition) / Time.deltaTime;
 
         previousVelocity = currentVelocity;
