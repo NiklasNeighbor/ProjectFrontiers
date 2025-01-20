@@ -10,6 +10,7 @@ public class Ingredient
     public preperation prep;
     public enum ingredient
     {
+        None,
         Herbs,
         Mushrooms,
         Eyeballs,
