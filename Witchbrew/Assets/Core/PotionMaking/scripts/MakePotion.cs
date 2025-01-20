@@ -7,6 +7,7 @@ using UnityEngine;
 public class recipe
 {
     public string RecipeName;
+    public GameObject PotionProduct;
 
     public Ingredient FirstIngredient;
     public Ingredient SecondIngredient;
@@ -70,7 +71,7 @@ public class MakePotion : MonoBehaviour
                 Debug.Log("created potion: " + recipe.RecipeName);
                 Debug.Log("Ingredients: " + ingredients[0].prep + " " + ingredients[0].type + ", " + ingredients[1].prep + " " + ingredients[1].type + ", " + ingredients[2].prep + " " + ingredients[2].type);
 
-                PotionSuccess();
+                PotionSuccess(recipe);
 
                 ingredients[0].type = Ingredient.ingredient.None;
                 ingredients[1].type = Ingredient.ingredient.None;
@@ -98,9 +99,25 @@ public class MakePotion : MonoBehaviour
         return false;
     }
 
-    public void PotionSuccess()
+    public void PotionSuccess(recipe FinalPotion)
     {
-        //Insert code for failed recipe here
+        //Insert code for successful recipe here
+        if (FinalPotion.PotionProduct != null)
+        {
+            //spawn the potion and get references
+            GameObject Product = Instantiate(FinalPotion.PotionProduct, gameObject.transform.position + Vector3.up, Quaternion.identity);
+            Rigidbody rb = Product.GetComponent<Rigidbody>();
+
+            //add some fun physics
+            float x = UnityEngine.Random.Range(-50f, 50f);
+            float z = UnityEngine.Random.Range(-50f, 50f);
+            rb.AddForce(new Vector3(x, 50f, z));
+            x = UnityEngine.Random.Range(-50f, 50f);
+            z = UnityEngine.Random.Range(-50f, 50f);
+            float y = UnityEngine.Random.Range(-50f, 50f);
+            rb.AddTorque(new Vector3(x, y, z));
+
+        }
     }
 
     public void PotionFail()
@@ -116,14 +133,17 @@ public class MakePotion : MonoBehaviour
     {
         MonoIngredient NewIngredient = other.gameObject.GetComponent<MonoIngredient>();
         
-        for (int i = 0; i < ingredients.Length; i++)
+        if (NewIngredient != null)
         {
-            if (ingredients[i].type == Ingredient.ingredient.None) 
+            for (int i = 0; i < ingredients.Length; i++)
             {
-                Debug.Log("Added ingredient to: " + ingredients[i]);
-                ingredients[i] = NewIngredient.Ingredient;
-                Destroy(other.gameObject);
-                return;
+                if (ingredients[i].type == Ingredient.ingredient.None)
+                {
+                    Debug.Log("Added ingredient to: " + ingredients[i]);
+                    ingredients[i] = NewIngredient.Ingredient;
+                    Destroy(other.gameObject);
+                    return;
+                }
             }
         }
     }
