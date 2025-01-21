@@ -50,6 +50,9 @@ public class InteractionManager : MonoBehaviour
         {
             // Recalculate target anchor based on the latest camera position
             configurableJoint.connectedAnchor = CalculateTargetAnchor();
+        } else if (isHolding && pickedObject == null)
+        {
+            isHolding = false;
         }
     }
 
@@ -106,11 +109,7 @@ public class InteractionManager : MonoBehaviour
             Vector3 targetPosition = CalculateTargetAnchor();
 
             // Smoothly move the object to the target position
-            pickedRigidbody.MovePosition(Vector3.Lerp(
-            pickedObject.transform.position,
-            targetPosition,
-            Time.fixedDeltaTime * .1f
-            ));
+            pickedRigidbody.position.Set(targetPosition.x, targetPosition.y, targetPosition.z);
 
             // Update joint anchor for physics consistency
             configurableJoint.connectedAnchor = targetPosition;
