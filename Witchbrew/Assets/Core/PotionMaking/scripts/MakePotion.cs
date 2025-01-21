@@ -107,14 +107,16 @@ public class MakePotion : MonoBehaviour
             //spawn the potion and get references
             GameObject Product = Instantiate(FinalPotion.PotionProduct, gameObject.transform.position + Vector3.up, Quaternion.identity);
             Rigidbody rb = Product.GetComponent<Rigidbody>();
+            MonoPotion ProductRecipe = rb.GetComponent<MonoPotion>();
+            ProductRecipe.recipe = FinalPotion;
 
             //add some fun physics
             float x = UnityEngine.Random.Range(-50f, 50f);
             float z = UnityEngine.Random.Range(-50f, 50f);
-            rb.AddForce(new Vector3(x, 50f, z));
-            x = UnityEngine.Random.Range(-50f, 50f);
-            z = UnityEngine.Random.Range(-50f, 50f);
-            float y = UnityEngine.Random.Range(-50f, 50f);
+            rb.AddForce(new Vector3(x, 200f, z));
+            x = UnityEngine.Random.Range(-20f, 20f);
+            z = UnityEngine.Random.Range(-20f, 20f);
+            float y = UnityEngine.Random.Range(-20f, 20f);
             rb.AddTorque(new Vector3(x, y, z));
 
         }
