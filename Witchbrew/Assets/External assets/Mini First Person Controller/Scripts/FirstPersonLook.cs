@@ -3,7 +3,6 @@
 public class FirstPersonLook : MonoBehaviour
 {
     [SerializeField]
-    public RecipeBookManager recipeBookManager;
     Transform character;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
@@ -26,7 +25,6 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-        if (isRecipeBookOpen) {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
         frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
@@ -34,7 +32,6 @@ public class FirstPersonLook : MonoBehaviour
         // Update the camera rotation
         velocity += frameVelocity;
         velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
-        }
     }
 
     void LateUpdate()
