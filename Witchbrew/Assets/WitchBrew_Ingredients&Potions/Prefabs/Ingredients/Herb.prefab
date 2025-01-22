@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3309813254432864226}
   - component: {fileID: 8063394568752967675}
   - component: {fileID: 2444578347219465846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3785466314246298495}
   - component: {fileID: 141562236591058280}
   - component: {fileID: 6380335172707870981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7908704920307186968}
   - component: {fileID: 618065921495432479}
   - component: {fileID: 3840949137762124463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 1579154473125626776}
   - component: {fileID: 8137007027653373026}
   - component: {fileID: 7875140772815410044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Herb_Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 5040629481157800246}
   - component: {fileID: 7058698953216041293}
   - component: {fileID: 8663255805444703089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 8788823128547192517}
   - component: {fileID: 1036264070822043500}
   - component: {fileID: 2520098803808751326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 6069710541225136540}
   - component: {fileID: 4686433266684927678}
   - component: {fileID: 7451458407347568497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 8693813821241105767}
   - component: {fileID: 562680000952464271}
   - component: {fileID: 512065873337619091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 7320822599877876399}
   - component: {fileID: 7322479721882263883}
   - component: {fileID: 7690691403282347727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 1382639572476541695}
   - component: {fileID: 2310255549325683202}
   - component: {fileID: 2213385168285125758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 4766201185474051981}
   - component: {fileID: 4741715603319350029}
   - component: {fileID: 1482377751805830718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,9 +922,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1476668875927237012}
-  m_Layer: 0
+  - component: {fileID: 2783440496532529928}
+  - component: {fileID: 3190910734312191855}
+  - component: {fileID: -5871071065451954866}
+  m_Layer: 6
   m_Name: Herb
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -939,7 +942,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.4548588, y: 0.18702361, z: 0.00025692614}
-  m_LocalScale: {x: 0.021801941, y: 0.021801941, z: 0.021801941}
+  m_LocalScale: {x: 0.036099922, y: 0.036099922, z: 0.036099922}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1579154473125626776}
@@ -957,6 +960,69 @@ Transform:
   - {fileID: 5040629481157800246}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2783440496532529928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788170678445260939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f97c1e9370ee04db6843cd2cd31e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ingredient:
+    type: 1
+    prep: 0
+--- !u!65 &3190910734312191855
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788170678445260939}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 27.509686, y: 32.736538, z: 34.268658}
+  m_Center: {x: -0.3315227, y: 0.28535235, z: -0.90000063}
+--- !u!54 &-5871071065451954866
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788170678445260939}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 2
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &7665069574445088507
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +1034,7 @@ GameObject:
   - component: {fileID: 8121647799512573415}
   - component: {fileID: 2660801963001929929}
   - component: {fileID: 8147889561334605114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1117,7 @@ GameObject:
   - component: {fileID: 7854262963897420829}
   - component: {fileID: 4014674329038553030}
   - component: {fileID: 342286998512714903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leaf_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
