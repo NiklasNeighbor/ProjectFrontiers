@@ -22,6 +22,9 @@ public class MakePotion : MonoBehaviour
     [Tooltip("List containing all the recipes. change this.")]
     public List<recipe> potions;
 
+    [Tooltip("With how much force the potion is launched out of the cauldron upon completion")]
+    public float ExpelForce = 200f;
+
 
 
     void Update()
@@ -113,7 +116,7 @@ public class MakePotion : MonoBehaviour
             //add some fun physics
             float x = UnityEngine.Random.Range(-50f, 50f);
             float z = UnityEngine.Random.Range(-50f, 50f);
-            rb.AddForce(new Vector3(x, 200f, z));
+            rb.AddForce(new Vector3(x, ExpelForce, z));
             x = UnityEngine.Random.Range(-20f, 20f);
             z = UnityEngine.Random.Range(-20f, 20f);
             float y = UnityEngine.Random.Range(-20f, 20f);
