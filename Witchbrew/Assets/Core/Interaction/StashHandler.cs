@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 
 public class StashHandler : MonoBehaviour
 {
     public InteractionManager interactionManager;
     public GameObject spawnableObject;
     public BoxCollider trigger; // The crate's trigger collider
+    public TextMeshPro countertext;
     public int stashValue = 0;
 
     private List<GameObject> spawnedObjects = new List<GameObject>(); // Track all spawned objects
@@ -14,6 +17,7 @@ public class StashHandler : MonoBehaviour
     {
         stashValue += value;
         Debug.Log($"Stash value: {stashValue}");
+        countertext.SetText(stashValue.ToString());
     }
 
     public void SpawnObject()
