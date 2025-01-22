@@ -36,7 +36,7 @@ public class InteractionManager : MonoBehaviour
             }
         }
 
-        Debug.Log(isHolding);
+        //Debug.Log(isHolding);
 
     }
 
