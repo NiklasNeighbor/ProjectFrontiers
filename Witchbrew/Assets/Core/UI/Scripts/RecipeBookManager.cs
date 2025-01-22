@@ -7,14 +7,14 @@ using TMPro;
 public class RecipeBookManager : MonoBehaviour
 {
     [Header("UI References")]
-    public GameObject recipeBookUI; // The parent UI GameObject for the recipe book
-    public Image pageImage; // Image component to display the current page content
-    public TMP_Text pageNumberText; // Text to display the current page number
+    public GameObject recipeBookUI; // GameObject for the recipe book
+    public Image pageImage; // Image to display the current sprite
+    public TMP_Text pageNumberText; // Text to display the current page number (not used rn)
     public Button nextPageButton; // Button to go to the next page
     public Button previousPageButton; // Button to go to the previous page
 
     [Header("Page Button Collections")]
-    public GameObject[] pageButtonCollections; // Array of button collections for each page (e.g., PotionButtons1, PotionButtons2, etc.)
+    public GameObject[] pageButtonCollections; // button collections for each page 
 
     [Header("Settings")]
     public KeyCode toggleMenuKey = KeyCode.Tab; // Key to open/close the recipe book
@@ -55,7 +55,7 @@ public class RecipeBookManager : MonoBehaviour
         {
             recipeBookUI.SetActive(isRecipeBookOpen);
 
-            // Lock cursor and disable player camera movement if open
+            // Lock cursor and disable player camera movement if its open
             Cursor.lockState = isRecipeBookOpen ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = isRecipeBookOpen;
         }
@@ -103,7 +103,28 @@ public class RecipeBookManager : MonoBehaviour
 
         // Activate/deactivate page-specific button collections
         HandlePageButtonVisibility();
+
+        // Disable PreviousPage button if we are on Page 1
+        if (previousPageButton != null && currentPage == 0)
+        {
+            previousPageButton.gameObject.SetActive(false); // Disable the PreviousPage button
+        }
+        else if (previousPageButton != null)
+        {
+            previousPageButton.gameObject.SetActive(true); // Enable the PreviousPage button
+        }
+
+        // Disable NextPage button if we are on Page 5
+        if (nextPageButton != null && currentPage == 4) // (Page 5 is at index 4)
+        {
+            nextPageButton.gameObject.SetActive(false); // Disable the NextPage button
+        }
+        else if (nextPageButton != null)
+        {
+            nextPageButton.gameObject.SetActive(true); // Enable the NextPage button
+        }
     }
+
 
     void HandlePageButtonVisibility()
     {
@@ -114,11 +135,27 @@ public class RecipeBookManager : MonoBehaviour
                 buttonCollection.SetActive(false); // Deactivate all button collections
         }
 
-        // Now, activate the button collection for the current page
+        // Now, activate the buttons
         if (currentPage >= 0 && currentPage < pageButtonCollections.Length)
         {
             if (pageButtonCollections[currentPage] != null)
                 pageButtonCollections[currentPage].SetActive(true); // Activate the button collection for the current page
+        }
+
+        // disable the previous page if on page 1
+        if (currentPage == 0 && pageButtonCollections.Length > 0 && pageButtonCollections[0] != null)
+        {
+            pageButtonCollections[0].SetActive(false); // Disable first page buttons
+            if (previousPageButton != null)
+                previousPageButton.interactable = false; // Disable the previous button
+        }
+
+        // disable the next page button if on page 5
+        if (currentPage == pageButtonCollections.Length - 1 && pageButtonCollections.Length > 0)
+        {
+            pageButtonCollections[currentPage].SetActive(false); // Disable last page buttons
+            if (nextPageButton != null)
+                nextPageButton.interactable = false; // Disable the next button
         }
     }
 
@@ -128,3 +165,5 @@ public class RecipeBookManager : MonoBehaviour
         return isRecipeBookOpen;
     }
 }
+
+
