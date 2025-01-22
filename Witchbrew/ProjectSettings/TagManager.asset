@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Stash
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Pickup
   - 
   - 
   - 

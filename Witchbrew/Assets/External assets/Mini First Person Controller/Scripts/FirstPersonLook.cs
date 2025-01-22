@@ -4,6 +4,7 @@ public class FirstPersonLook : MonoBehaviour
 {
     [SerializeField]
     Transform character;
+    public RecipeBookManager RecipeBookManager;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 
@@ -25,13 +26,16 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-        Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
-        frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
+        if (!RecipeBookManager.isRecipeBookOpen)
+        {
+            Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
+            frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
 
-        // Update the camera rotation
-        velocity += frameVelocity;
-        velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
+            // Update the camera rotation
+            velocity += frameVelocity;
+            velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
+        }
     }
 
     void LateUpdate()

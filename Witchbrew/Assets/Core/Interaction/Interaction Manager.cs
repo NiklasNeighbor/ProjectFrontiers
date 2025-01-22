@@ -1,21 +1,24 @@
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
+    public StashHandler stashHandler;
     public Camera playerCamera;
     public float pickupDistance = 3f;
     public float interactionRange = 5f;
     public float jointSpring = 500f;
     public float jointDamper = 50f;
+    public GameObject pickedObject = null;
+    public Rigidbody pickedRigidbody = null;
+    public RaycastHit hit;
+    public bool isHolding = false;
 
-    private GameObject pickedObject = null;
-    private Rigidbody pickedRigidbody = null;
     private ConfigurableJoint configurableJoint = null;
-    private RaycastHit hit;
     private Vector3 previousPosition;
     private Vector3 previousVelocity;  // Store the previous velocity before dropping
-    private bool isHolding = false;
+    private GameObject currentStash;
 
     void Update()
     {
@@ -25,13 +28,15 @@ public class InteractionManager : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, interactionRange) && !isHolding)
             {
-                TryPickupObject();
+                TryInteract();
             }
             else if (isHolding)
             {
                 DropObject();
             }
         }
+
+        Debug.Log(isHolding);
 
     }
 
@@ -50,56 +55,71 @@ public class InteractionManager : MonoBehaviour
         {
             // Recalculate target anchor based on the latest camera position
             configurableJoint.connectedAnchor = CalculateTargetAnchor();
-        } else if (isHolding && pickedObject == null)
+        }
+
+        // Ensure isHolding remains consistent
+        if (isHolding && (pickedObject == null || !pickedObject.activeInHierarchy))
         {
-            isHolding = false;
+            ResetHoldingState();
         }
     }
 
 
-    void TryPickupObject()
+    void TryInteract()
     {
         if (hit.rigidbody != null && hit.collider.CompareTag("Pickup"))
         {
             pickedObject = hit.collider.gameObject;
             pickedRigidbody = pickedObject.GetComponent<Rigidbody>();
+            Holding();
 
-            // Add ConfigurableJoint
-            configurableJoint = pickedObject.AddComponent<ConfigurableJoint>();
-            configurableJoint.autoConfigureConnectedAnchor = false;
-            configurableJoint.anchor = Vector3.zero;
-            configurableJoint.connectedAnchor = playerCamera.transform.position + playerCamera.transform.forward * pickupDistance;
+           
+        }  else if (hit.collider != null && hit.collider.CompareTag("Stash"))
+        {
+            currentStash = hit.collider.gameObject;
+            stashHandler = currentStash.GetComponent<StashHandler>();
+            stashHandler.SpawnObject();
+        }
+    }
 
-            // Set motion constraints for the joint
-            configurableJoint.xMotion = ConfigurableJointMotion.Limited;
-            configurableJoint.yMotion = ConfigurableJointMotion.Limited;
-            configurableJoint.zMotion = ConfigurableJointMotion.Limited;
 
-            // Allow free rotation
-            configurableJoint.angularXMotion = ConfigurableJointMotion.Free;
-            configurableJoint.angularYMotion = ConfigurableJointMotion.Free;
-            configurableJoint.angularZMotion = ConfigurableJointMotion.Free;
+    public void Holding()
+    {
+        // Add ConfigurableJoint
+        configurableJoint = pickedObject.AddComponent<ConfigurableJoint>();
+        configurableJoint.autoConfigureConnectedAnchor = false;
+        configurableJoint.anchor = Vector3.zero;
+        configurableJoint.connectedAnchor = playerCamera.transform.position + playerCamera.transform.forward * pickupDistance;
 
-            // Configure joint's drive for position control
-            JointDrive jointDrive = new JointDrive
-            {
-                positionSpring = jointSpring,
-                positionDamper = jointDamper,
-                maximumForce = Mathf.Infinity
-            };
-            configurableJoint.xDrive = jointDrive;
-            configurableJoint.yDrive = jointDrive;
-            configurableJoint.zDrive = jointDrive;
+        // Set motion constraints for the joint
+        configurableJoint.xMotion = ConfigurableJointMotion.Limited;
+        configurableJoint.yMotion = ConfigurableJointMotion.Limited;
+        configurableJoint.zMotion = ConfigurableJointMotion.Limited;
 
-            // Disable gravity while holding
-            pickedRigidbody.useGravity = false;
+        // Allow free rotation
+        configurableJoint.angularXMotion = ConfigurableJointMotion.Free;
+        configurableJoint.angularYMotion = ConfigurableJointMotion.Free;
+        configurableJoint.angularZMotion = ConfigurableJointMotion.Free;
 
-            // Store the initial velocity and position for momentum calculation
-            previousPosition = pickedObject.transform.position;
-            previousVelocity = pickedRigidbody.velocity;
+        // Configure joint's drive for position control
+        JointDrive jointDrive = new JointDrive
+        {
+            positionSpring = jointSpring,
+            positionDamper = jointDamper,
+            maximumForce = Mathf.Infinity
+        };
+        configurableJoint.xDrive = jointDrive;
+        configurableJoint.yDrive = jointDrive;
+        configurableJoint.zDrive = jointDrive;
 
-            isHolding = true;
-        }  
+        // Disable gravity while holding
+        pickedRigidbody.useGravity = false;
+
+        // Store the initial velocity and position for momentum calculation
+        previousPosition = pickedObject.transform.position;
+        previousVelocity = pickedRigidbody.velocity;
+
+        isHolding = true;        
     }
 
     void UpdateJointTargetPosition()
@@ -109,7 +129,11 @@ public class InteractionManager : MonoBehaviour
             Vector3 targetPosition = CalculateTargetAnchor();
 
             // Smoothly move the object to the target position
-            pickedRigidbody.position.Set(targetPosition.x, targetPosition.y, targetPosition.z);
+            pickedRigidbody.MovePosition(Vector3.Lerp(
+            pickedObject.transform.position,
+            targetPosition,
+            Time.fixedDeltaTime * .1f
+            ));
 
             // Update joint anchor for physics consistency
             configurableJoint.connectedAnchor = targetPosition;
@@ -150,6 +174,19 @@ public class InteractionManager : MonoBehaviour
 
         previousVelocity = currentVelocity;
         previousPosition = currentPosition;
+    }
+
+    void ResetHoldingState()
+    {
+        isHolding = false;
+        pickedObject = null;
+        pickedRigidbody = null;
+        if (configurableJoint != null)
+        {
+            Destroy(configurableJoint);
+            configurableJoint = null;
+        }
+        Debug.Log("Reset holding state due to object disappearance.");
     }
 }
 
