@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2171134639736735611}
   - component: {fileID: 5214690235968753539}
   - component: {fileID: 968842437232115162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pPlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,9 +92,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8878373655150636128}
-  m_Layer: 0
+  - component: {fileID: 6299502141808718006}
+  - component: {fileID: -8815501435000500883}
+  - component: {fileID: 7195934232422218967}
+  m_Layer: 6
   m_Name: I_Believe_I_Can_Fly
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 45.965572, y: -0.00000082597376, z: -0.9340943}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.020474195, y: 0.020474195, z: 0.020474195}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2171134639736735611}
@@ -121,6 +124,78 @@ Transform:
   - {fileID: 126154049367971581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6299502141808718006
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991282849945097329}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 2
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &-8815501435000500883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991282849945097329}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40.021896, y: 53.134388, z: 38.271526}
+  m_Center: {x: -0.76503754, y: 3.0242643, z: 0.6946698}
+--- !u!114 &7195934232422218967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991282849945097329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0747a6c54d04ab42bf0e913721bc622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipe:
+    RecipeName: 
+    PotionProduct: {fileID: 0}
+    FirstIngredient:
+      type: 0
+      prep: 0
+    SecondIngredient:
+      type: 0
+      prep: 0
+    ThirdIngredient:
+      type: 0
+      prep: 0
 --- !u!1 &3881784439819892938
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +207,7 @@ GameObject:
   - component: {fileID: 3181604937085215448}
   - component: {fileID: 1835518380305610224}
   - component: {fileID: 8811175311491410417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +290,7 @@ GameObject:
   - component: {fileID: 7180250716409138911}
   - component: {fileID: 8794516443565269186}
   - component: {fileID: 7465271083813907237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +373,7 @@ GameObject:
   - component: {fileID: 6044052262083390474}
   - component: {fileID: 460045967456724147}
   - component: {fileID: 7161435047446488929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pTorus3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +456,7 @@ GameObject:
   - component: {fileID: 3503227714058981950}
   - component: {fileID: 299123724821449082}
   - component: {fileID: 4478073251228672509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +539,7 @@ GameObject:
   - component: {fileID: 1284890119474135756}
   - component: {fileID: 4691013741543215079}
   - component: {fileID: 7065329036643898876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,6 +619,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8878373655150636128}
     m_Modifications:
+    - target: {fileID: -7384632198833150164, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -7384632198833150164, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7384632198833150164, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742723216012129176, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742723216012129176, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742723216012129176, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1742723216012129176, guid: df54e9ace7a697d49a3bf94b863ba3ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -599,7 +704,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion_Cork
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2798768420182718732, guid: df54e9ace7a697d49a3bf94b863ba3ab,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7384632198833150164, guid: df54e9ace7a697d49a3bf94b863ba3ab, type: 3}
+    - {fileID: 1683737628249388879, guid: df54e9ace7a697d49a3bf94b863ba3ab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

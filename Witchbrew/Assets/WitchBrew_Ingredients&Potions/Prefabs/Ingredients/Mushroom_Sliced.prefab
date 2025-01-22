@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222270067018342242}
-  m_Layer: 0
+  - component: {fileID: -6722083441283805061}
+  - component: {fileID: -1660732545012425047}
+  - component: {fileID: -462797812016730625}
+  m_Layer: 6
   m_Name: Mushroom_Sliced
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +29,76 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.6788171, w: 0.7343074}
   m_LocalPosition: {x: -1.0559076, y: 0.061122, z: 1.0465649}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.017838594, y: 0.017838594, z: 0.017838594}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1057581544195360247}
   - {fileID: 8640667412490555948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6722083441283805061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231102641864053453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f97c1e9370ee04db6843cd2cd31e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ingredient:
+    type: 2
+    prep: 2
+--- !u!65 &-1660732545012425047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231102641864053453}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 47.5756, y: 87.48559, z: 40.34938}
+  m_Center: {x: 8.67674, y: -53.482616, z: -1.4942281}
+--- !u!54 &-462797812016730625
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231102641864053453}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 2
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &5184760617138518534
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +110,7 @@ GameObject:
   - component: {fileID: 1057581544195360247}
   - component: {fileID: 9128691856268614905}
   - component: {fileID: 8677192498052128733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mushroom_Head1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +193,7 @@ GameObject:
   - component: {fileID: 8640667412490555948}
   - component: {fileID: 3185692728360051011}
   - component: {fileID: 6101046947296474900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mushroom_Stem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
