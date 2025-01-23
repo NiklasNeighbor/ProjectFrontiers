@@ -7,7 +7,7 @@ using UnityEngine.Video;
 using Unity.VisualScripting;
 using UnityEngine.ProBuilder.MeshOperations;
 
-public class DialogueSystem : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject dialogueUI;
@@ -47,7 +47,7 @@ public class DialogueSystem : MonoBehaviour
     private int currentDialogueIndex = 0;
     private int currentLineIndex = 0;
 
-    private bool isDialogueActive = false;
+    public bool isDialogueActive = false;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
 
@@ -175,7 +175,7 @@ public class DialogueSystem : MonoBehaviour
         ShowNextLine();
     }
 
-    void ShowNextLine()
+    public void ShowNextLine()
     {
         Dialogue currentDialogue = dialogues[currentDialogueIndex];
 

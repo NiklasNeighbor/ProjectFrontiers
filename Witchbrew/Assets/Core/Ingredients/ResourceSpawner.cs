@@ -49,22 +49,35 @@ public class ResourceSpawner : MonoBehaviour
 
     void CheckSpawn()
     {
-        if (timeStamp + RespawnDelay < Time.time)
+        // Only proceed if the respawn delay has passed
+        if (Time.time >= timeStamp + RespawnDelay)
         {
             for (int i = 0; i < spawnList.Length; i++)
             {
+                // Find an empty slot in the spawn list
                 if (spawnList[i] == null)
                 {
+                    // Spawn a resource and assign it to the slot
                     spawnList[i] = SpawnResource();
-                    timeStamp = Time.time;
                     Debug.Log("Spawned wild resource");
-                    return;
+
+                    // Update timestamp after spawning
+                    timeStamp = Time.time;
+                    return; // Exit the method after spawning one resource
                 }
             }
-            timeStamp = Time.time;
+
+            // If we reach here, all slots are full
+            Debug.Log("All slots are full, cannot spawn more resources");
+            timeStamp = Time.time; // Update timestamp even if we couldn't spawn
         }
     }
-    
+
+
+
+
+
+
 
 
 
