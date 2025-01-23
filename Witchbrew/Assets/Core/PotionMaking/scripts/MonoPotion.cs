@@ -14,6 +14,6 @@ public class MonoPotion : MonoBehaviour
 
     public void Start()
     {
-        gameObject.tag = "pickup";
+        gameObject.tag = "Pickup";
     }
 }
