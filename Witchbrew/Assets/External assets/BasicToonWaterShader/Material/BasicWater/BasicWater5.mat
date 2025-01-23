@@ -155,7 +155,7 @@ Material:
     - _GlowStrength: 0
     - _HighlightStrength: 0.3
     - _HologramTransparency: 1
-    - _Metallic: 0
+    - _Metallic: 0.2
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: 0.01
@@ -178,7 +178,7 @@ Material:
     - _ShadowSteps: 6.29
     - _ShadowStrength: 0
     - _SmoothFactor: 0.5
-    - _Smoothness: 0.968
+    - _Smoothness: 0.88
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
