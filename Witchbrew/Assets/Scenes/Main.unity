@@ -841,6 +841,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
+      propertyPath: RespawnDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
+        type: 3}
       propertyPath: SpawnRange.x
       value: 8
       objectReference: {fileID: 0}
@@ -7433,7 +7438,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 460185147}
   countertext: {fileID: 0}
-  stashValue: 10
+  stashValue: 0
 --- !u!1001 &460202011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21624,6 +21629,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
+      propertyPath: RespawnDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
+        type: 3}
       propertyPath: SpawnRange.x
       value: 9.6
       objectReference: {fileID: 0}
@@ -21943,7 +21953,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 916117198}
   countertext: {fileID: 0}
-  stashValue: 10
+  stashValue: 0
 --- !u!1001 &920483246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28416,7 +28426,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 973329778}
   countertext: {fileID: 0}
-  stashValue: 10
+  stashValue: 0
 --- !u!65 &973329778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29153,13 +29163,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
+      propertyPath: RespawnDelay
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
+        type: 3}
       propertyPath: SpawnRange.x
-      value: 15
+      value: 7.76
       objectReference: {fileID: 0}
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
       propertyPath: SpawnRange.z
-      value: 12
+      value: 7.98
       objectReference: {fileID: 0}
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
@@ -29185,7 +29200,7 @@ PrefabInstance:
     - target: {fileID: 8045667907169683694, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.4000015
+      value: 4.35
       objectReference: {fileID: 0}
     - target: {fileID: 8045667907169683694, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
@@ -29195,7 +29210,7 @@ PrefabInstance:
     - target: {fileID: 8045667907169683694, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.59200287
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 8045667907169683694, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
@@ -32038,7 +32053,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 1168615450}
   countertext: {fileID: 0}
-  stashValue: 10
+  stashValue: 0
 --- !u!1001 &1171666495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40393,6 +40408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone
       objectReference: {fileID: 0}
+    - target: {fileID: 7790980596642258371, guid: 548e9351f19d0924484c58cb8cf3688f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -64341684702544470, guid: 548e9351f19d0924484c58cb8cf3688f, type: 3}
     m_RemovedGameObjects: []
@@ -41175,6 +41195,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1457466693}
     m_Modifications:
+    - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
+        type: 3}
+      propertyPath: RespawnDelay
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
       propertyPath: SpawnRange.x
@@ -46095,7 +46120,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 1957934217}
   countertext: {fileID: 0}
-  stashValue: 10
+  stashValue: 0
 --- !u!1001 &1969233033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46372,6 +46397,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1354637156}
     m_Modifications:
+    - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
+        type: 3}
+      propertyPath: RespawnDelay
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 199736549176166633, guid: 451db4b2b88735e478ecfaa79cc22025,
         type: 3}
       propertyPath: SpawnRange.x

@@ -21,7 +21,7 @@ public class ResourceSpawner : MonoBehaviour
     void Start()
     {
         spawnList = new GameObject[MaxAmount];
-        
+
     }
 
     // Update is called once per frame
@@ -49,40 +49,21 @@ public class ResourceSpawner : MonoBehaviour
 
     void CheckSpawn()
     {
-        // Only proceed if the respawn delay has passed
-        if (Time.time >= timeStamp + RespawnDelay)
+        if (timeStamp + RespawnDelay < Time.time)
         {
             for (int i = 0; i < spawnList.Length; i++)
             {
-                // Find an empty slot in the spawn list
                 if (spawnList[i] == null)
                 {
-                    // Spawn a resource and assign it to the slot
                     spawnList[i] = SpawnResource();
-                    Debug.Log("Spawned wild resource");
-
-                    // Update timestamp after spawning
                     timeStamp = Time.time;
-                    return; // Exit the method after spawning one resource
+                    Debug.Log("Spawned wild resource");
+                    return;
                 }
             }
-
-            // If we reach here, all slots are full
-            Debug.Log("All slots are full, cannot spawn more resources");
-            timeStamp = Time.time; // Update timestamp even if we couldn't spawn
+            timeStamp = Time.time;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     private void OnDrawGizmosSelected()
@@ -90,5 +71,5 @@ public class ResourceSpawner : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, SpawnRange);
     }
 
-    
-}
+
+}   
