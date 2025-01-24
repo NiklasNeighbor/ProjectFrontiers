@@ -15208,7 +15208,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9622642, g: 0.70138377, b: 0.07807041, a: 1}
+  m_Color: {r: 0.9529412, g: 0.80784315, b: 0.18431373, a: 1}
   m_Intensity: 15.87
   m_Range: 10
   m_SpotAngle: 30
@@ -17159,7 +17159,7 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[11].text
-      value: I felt a connection with him, he's the perfect kitten
+      value: I felt a connection with him, he's the perfect kitten.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -52151,7 +52151,7 @@ Transform:
   m_GameObject: {fileID: 1657759735}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5022341, y: 0.50223416, z: 0.49775586, w: 0.49775586}
-  m_LocalPosition: {x: -17.118273, y: 7.150239, z: -10.046185}
+  m_LocalPosition: {x: -17.118273, y: 7.2, z: -10.046185}
   m_LocalScale: {x: 1.4336517, y: 1.0706999, z: 1.0706999}
   m_ConstrainProportionsScale: 0
   m_Children: []
