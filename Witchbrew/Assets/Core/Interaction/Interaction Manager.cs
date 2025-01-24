@@ -138,7 +138,7 @@ public class InteractionManager : MonoBehaviour
             // Update joint anchor for physics consistency
             configurableJoint.connectedAnchor = targetPosition;
         }
-    }
+    }   
     Vector3 CalculateTargetAnchor()
     {
         // Calculate the desired anchor position relative to the camera

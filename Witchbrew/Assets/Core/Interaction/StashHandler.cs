@@ -13,6 +13,10 @@ public class StashHandler : MonoBehaviour
 
     private List<GameObject> spawnedObjects = new List<GameObject>(); // Track all spawned objects
 
+    void Start()
+    {
+        countertext.SetText(stashValue.ToString());
+    }
     public void AddValue(int value)
     {
         stashValue += value;
