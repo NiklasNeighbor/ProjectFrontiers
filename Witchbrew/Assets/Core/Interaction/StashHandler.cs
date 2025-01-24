@@ -17,6 +17,23 @@ public class StashHandler : MonoBehaviour
     {
         stashValue += value;
         Debug.Log($"Stash value: {stashValue}");
+        if (countertext != null)
+        {
+            countertext.SetText(stashValue.ToString());
+        }
+        else
+        {
+            Debug.LogWarning("Countertext is not assigned!");
+        }
+    }
+
+    void Start()
+    {
+        countertext.SetText(stashValue.ToString());
+    }
+
+    private void Update()
+    {
         countertext.SetText(stashValue.ToString());
     }
 
