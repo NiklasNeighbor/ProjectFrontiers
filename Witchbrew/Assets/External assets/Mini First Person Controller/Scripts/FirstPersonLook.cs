@@ -27,13 +27,12 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-
-        // If the UI popup is active, freeze the camera and unlock the cursor
-        if (TutorialPopUp != null && TutorialPopUp.activeSelf)
+        // If the Recipe Book is open or the UI popup is active, unlock the cursor and stop camera movement
+        if ((TutorialPopUp != null && TutorialPopUp.activeSelf) || RecipeBookManager.isRecipeBookOpen)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            return; // Exit update to prevent camera movement
+            return; // Exit the update to prevent camera movement
         }
         else
         {
@@ -41,17 +40,18 @@ public class FirstPersonLook : MonoBehaviour
             Cursor.visible = false;
         }
 
+        // Only allow mouse look if the recipe book is not open
         if (!RecipeBookManager.isRecipeBookOpen)
         {
             Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
             Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
             frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
 
-            // Update the camera rotation
             velocity += frameVelocity;
             velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
         }
     }
+
 
     void LateUpdate()
     {
