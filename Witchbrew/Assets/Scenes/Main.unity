@@ -50194,7 +50194,7 @@ MonoBehaviour:
   OrderTimestamp: 0
   TipAmount: 0
   TotalCoins: 0
-  MaxTip: 50
+  MaxTip: 80
   PotionPrice: 100
 --- !u!65 &1630214730
 BoxCollider:

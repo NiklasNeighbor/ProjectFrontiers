@@ -17,7 +17,7 @@ public class Orders : MonoBehaviour
     public float TotalCoins;
 
     [Space(20)]
-    public float MaxTip = 50;
+    public float MaxTip = 80;
     public float PotionPrice = 100;
 
     // Start is called before the first frame update
