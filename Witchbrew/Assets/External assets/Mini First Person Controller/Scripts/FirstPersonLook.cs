@@ -5,6 +5,7 @@ public class FirstPersonLook : MonoBehaviour
     [SerializeField]
     Transform character;
     public RecipeBookManager RecipeBookManager;
+    public GameObject TutorialPopUp; // Reference to the UI popup GameObject
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 
@@ -26,6 +27,20 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+
+        // If the UI popup is active, freeze the camera and unlock the cursor
+        if (TutorialPopUp != null && TutorialPopUp.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return; // Exit update to prevent camera movement
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         if (!RecipeBookManager.isRecipeBookOpen)
         {
             Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
@@ -40,6 +55,8 @@ public class FirstPersonLook : MonoBehaviour
 
     void LateUpdate()
     {
+        if (TutorialPopUp != null && TutorialPopUp.activeSelf) return;
+
         // Apply rotations after all updates
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
         character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);

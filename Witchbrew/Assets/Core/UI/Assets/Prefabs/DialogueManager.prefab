@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3462388760341496907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6613781689099657925}
+  - component: {fileID: 4966616452546696172}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6613781689099657925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462388760341496907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.131265, y: -6.401586, z: 11.591861}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4966616452546696172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462388760341496907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4a8767c4a521a4fae0aae21e06314e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 0}
+  dialogueText: {fileID: 0}
+  characterNameText: {fileID: 0}
+  characterImage: {fileID: 0}
+  nextKey: 32
+  typingSpeed: 0.025
+  backgroundMusic: {fileID: 0}
+  dialogueMusic: {fileID: 0}
+  defaultMusic: {fileID: 0}
+  backgrounds: []
+  dialogues:
+  - characterName: 
+    lines:
+    - text: I always have wanted a cat.
+      characterSprite: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - text: A couple of days ago i saw the loveliest cat ive ever seen... The only
+        problem is his adoption fee
+      characterSprite: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - text: That's why i started working in my new potion shop, to earn the money
+        to buy him!
+      characterSprite: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    videoClip: {fileID: 32900000, guid: 0660cac6fe48c454da19c07b49cb4887, type: 3}
+    backgroundGameObject: {fileID: 0}
+  - characterName: Customer
+    lines:
+    - text: an i get an espresso?
+      characterSprite: {fileID: 21300000, guid: b92d7010d2c98f64c82ab39e73a31a3e,
+        type: 3}
+    videoClip: {fileID: 0}
+    backgroundGameObject: {fileID: 0}
+  videoPlayer: {fileID: 0}
