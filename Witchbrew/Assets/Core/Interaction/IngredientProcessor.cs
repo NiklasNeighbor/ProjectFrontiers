@@ -17,7 +17,7 @@ public class IngredientProcessor : MonoBehaviour
     [System.Serializable]
     public class IngredientTransformation
     {
-        public GameObject ingredientPrefab; // The ingredient prefab (e.g., RedCube, BlueCube)
+        public GameObject ingredientPrefab; // The ingredient prefab (e.g., RedCube, GreenCube)
         public GameObject slicedVersion; // Sliced version prefab
         public GameObject roastedVersion; // Roasted version prefab
         public GameObject grindedVersion; // Grinded version prefab
@@ -47,28 +47,44 @@ public class IngredientProcessor : MonoBehaviour
 
         if (transformation != null)
         {
+            // Debug log to show the detected ingredient
+            Debug.Log($"Processing ingredient: {collision.gameObject.name}");
+
             // Set the lock to prevent further processing
             isProcessing = true;
 
             // Destroy the original object
             Destroy(collision.gameObject);
+            Debug.Log($"Destroyed ingredient: {collision.gameObject.name}"); // Log destruction
 
             // Start spawning the processed version
             StartCoroutine(SpawnProcessedVersion(transformation, collision.transform.position));
+        }
+        else
+        {
+            Debug.LogWarning($"No transformation found for: {collision.gameObject.name}");
         }
     }
 
     private IngredientTransformation FindIngredientTransformation(GameObject ingredient)
     {
-        // Check each transformation and compare the prefab with the collided object's prefab
+        // Check each transformation and compare the prefab reference directly
         foreach (IngredientTransformation transformation in ingredientTransformations)
         {
-            if (ingredient.CompareTag(transformation.ingredientPrefab.tag)) // Compare tags for prefab matching
+            // Compare the prefab references directly without relying on the tag
+            if (ingredient != null && IsSamePrefab(ingredient, transformation.ingredientPrefab))
             {
                 return transformation;
             }
         }
         return null;
+    }
+
+    // Helper method to compare the collided object prefab with the stored prefab in transformations list
+    private bool IsSamePrefab(GameObject ingredient, GameObject prefab)
+    {
+        // Compare the prefab of the instantiated ingredient and the reference prefab
+        return ingredient != null && ingredient.name.StartsWith(prefab.name);
     }
 
     private IEnumerator SpawnProcessedVersion(IngredientTransformation transformation, Vector3 position)
@@ -95,6 +111,8 @@ public class IngredientProcessor : MonoBehaviour
         // Spawn the processed ingredient if a prefab is assigned
         if (prefabToSpawn != null)
         {
+            Debug.Log($"Spawning processed ingredient: {prefabToSpawn.name}");
+
             GameObject processedObject = Instantiate(prefabToSpawn, position, Quaternion.identity);
 
             // Assign the "Processed" layer to the spawned object
