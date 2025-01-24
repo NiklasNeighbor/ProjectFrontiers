@@ -8849,7 +8849,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 460185147}
   countertext: {fileID: 1777017440}
-  stashValue: 0
+  stashValue: 1
 --- !u!1 &461232428
 GameObject:
   m_ObjectHideFlags: 0
@@ -23926,7 +23926,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 916117198}
   countertext: {fileID: 734590651}
-  stashValue: 0
+  stashValue: 1
 --- !u!1001 &920483246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30794,7 +30794,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 973329778}
   countertext: {fileID: 1584041816}
-  stashValue: 0
+  stashValue: 1
 --- !u!65 &973329778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35365,7 +35365,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 1168615450}
   countertext: {fileID: 1058213994}
-  stashValue: 0
+  stashValue: 1
 --- !u!1001 &1171666495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58638,7 +58638,7 @@ MonoBehaviour:
     type: 3}
   trigger: {fileID: 1957934217}
   countertext: {fileID: 16158513}
-  stashValue: 0
+  stashValue: 1
 --- !u!1 &1969547670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5222355467234558969, guid: 98f3b1aaca67b5d4e827aed44b9fa5d1,
