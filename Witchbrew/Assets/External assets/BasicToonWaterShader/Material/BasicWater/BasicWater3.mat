@@ -39,6 +39,8 @@ Material:
     - _FoamCutoff: 0.52
     - _FoamNoiseScale: 1.99
     - _FoamSpeed: 2.89
+    - _Metallic: 0
+    - _Smoothness: 0
     - _TransparencyStrength: 0.75
     m_Colors:
     - _BaseColor: {r: 0.13416693, g: 0.48036885, b: 0.6320754, a: 1}

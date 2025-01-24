@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6722083441283805061}
   - component: {fileID: -1660732545012425047}
   - component: {fileID: -462797812016730625}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Sliced
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1057581544195360247}
   - component: {fileID: 9128691856268614905}
   - component: {fileID: 8677192498052128733}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Head1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 8640667412490555948}
   - component: {fileID: 3185692728360051011}
   - component: {fileID: 6101046947296474900}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Stem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

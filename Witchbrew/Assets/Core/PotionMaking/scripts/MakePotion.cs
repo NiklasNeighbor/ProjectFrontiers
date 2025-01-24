@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [Serializable]
@@ -12,6 +13,8 @@ public class recipe
     public Ingredient FirstIngredient;
     public Ingredient SecondIngredient;
     public Ingredient ThirdIngredient;
+
+
 }
 
 public class MakePotion : MonoBehaviour
@@ -25,6 +28,7 @@ public class MakePotion : MonoBehaviour
     [Tooltip("With how much force the potion is launched out of the cauldron upon completion")]
     public float ExpelForce = 200f;
 
+    public TMP_Text failMessageText;
 
 
     void Update()
@@ -129,7 +133,21 @@ public class MakePotion : MonoBehaviour
     {
         Debug.Log("No Potion with those ingredients found!");
 
-        //Insert code for failed recipe here
+        if (failMessageText != null)
+        {
+            StartCoroutine(DisplayFailMessage());
+        }
+    }
+
+    private IEnumerator DisplayFailMessage()
+    {
+        failMessageText.text = "Wrong ingredients!"; // Set the text to show
+        failMessageText.gameObject.SetActive(true); // Make sure the text is visible
+
+        // Wait for 1 second
+        yield return new WaitForSeconds(3f);
+
+        failMessageText.gameObject.SetActive(false); // Hide the message after 1 second
     }
 
 

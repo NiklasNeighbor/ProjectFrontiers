@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 707086463412474569}
   - component: {fileID: 7509537194300016634}
   - component: {fileID: 8214376926901697325}
-  m_Layer: 6
-  m_Name: Dust_Herb
+  m_Layer: 7
+  m_Name: Herb_Grinded
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.35510492, y: 0.08206228, z: 0.5012283}
-  m_LocalScale: {x: 0.015896058, y: 0.015896058, z: 0.015896058}
+  m_LocalScale: {x: 0.016, y: 0.016, z: 0.016}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
