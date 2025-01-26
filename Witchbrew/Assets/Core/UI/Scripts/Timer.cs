@@ -40,6 +40,9 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining = 0;
                 isTimerRunning = false;  // Stop the timer once it reaches 0
+
+                // Call the game-ending logic
+                GameEnd();
             }
 
             // Format the remaining time as minutes and seconds
@@ -66,6 +69,22 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = true;
     }
+
+    public void GameEnd()
+    {
+        PauseTimer();
+        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager != null)
+        {
+            dialogueManager.CheckGameEnd();
+            enabled = false; // Disable the Timer script completely
+        }
+    }
+
+
+
+
+
 
 }
 
