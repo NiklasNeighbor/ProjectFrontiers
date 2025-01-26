@@ -30,6 +30,10 @@ public class MakePotion : MonoBehaviour
 
     public TMP_Text failMessageText;
 
+    [Header("VFX")]
+    public GameObject failVFXPrefab;
+    public Transform explosionLocation; // Reference to the location where the explosion will happen
+
 
     void Update()
     {
@@ -132,6 +136,13 @@ public class MakePotion : MonoBehaviour
     public void PotionFail()
     {
         Debug.Log("No Potion with those ingredients found!");
+
+        if (failVFXPrefab != null)
+        {
+            Vector3 spawnPosition = explosionLocation != null ? explosionLocation.position : transform.position;
+            Quaternion spawnRotation = explosionLocation != null ? explosionLocation.rotation : Quaternion.identity;
+            Instantiate(failVFXPrefab, spawnPosition, spawnRotation);
+        }
 
         if (failMessageText != null)
         {

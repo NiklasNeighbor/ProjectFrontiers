@@ -41,6 +41,9 @@ public class IngredientProcessor : MonoBehaviour
     [Header("Spawn Settings")]
     public Transform spawnLocation; // Reference to the location where the processed ingredient will be spawned
 
+    [Header("VFX Prefab")]
+    public GameObject vfxPrefab; 
+
     private void Start()
     {
         // Store the initial scale of the progress bar
@@ -61,6 +64,12 @@ public class IngredientProcessor : MonoBehaviour
         if (transformation != null)
         {
             isProcessing = true;
+
+            if (vfxPrefab != null)
+            {
+                Instantiate(vfxPrefab, collision.transform.position, collision.transform.rotation);
+            }
+
             Destroy(collision.gameObject);
             StartCoroutine(SpawnProcessedVersion(transformation));
         }
