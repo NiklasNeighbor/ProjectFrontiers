@@ -25,7 +25,7 @@ public class Orders : MonoBehaviour
     void Start()
     {
         GetRandomRecipe();
-        CoinDisplay.text = "Coins: " + TotalCoins.ToString();
+        CoinDisplay.text = TotalCoins.ToString();
 
     }
 
@@ -72,7 +72,7 @@ public class Orders : MonoBehaviour
             {
                 TipAmount = Mathf.Round(TipAmount);
                 TotalCoins = TotalCoins + PotionPrice + TipAmount;
-                CoinDisplay.text = "Coins: " + TotalCoins.ToString();
+                CoinDisplay.text =TotalCoins.ToString();
                 
             }
             Destroy(other.gameObject);

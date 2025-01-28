@@ -50,7 +50,7 @@ public class Timer : MonoBehaviour
             int seconds = Mathf.FloorToInt(timeRemaining % 60);
 
             // Update the UI text to show the formatted time
-            timerText.text = string.Format("Time left: {0:00}:{1:00}", minutes, seconds);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 
