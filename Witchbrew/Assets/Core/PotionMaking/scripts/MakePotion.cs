@@ -8,6 +8,7 @@ using UnityEngine;
 public class recipe
 {
     public string RecipeName;
+    public Texture2D OrderTexture;
     public GameObject PotionProduct;
 
     public Ingredient FirstIngredient;

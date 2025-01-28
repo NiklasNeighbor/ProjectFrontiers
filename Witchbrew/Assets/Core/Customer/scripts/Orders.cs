@@ -10,6 +10,7 @@ public class Orders : MonoBehaviour
     public MakePotion RecipeBook;
 
     public TMP_Text OrderDisplay;
+    public RawImage OrderImage;
     public TMP_Text CoinDisplay;
 
     public float OrderTimestamp;
@@ -40,7 +41,14 @@ public class Orders : MonoBehaviour
         {
             int RandomIndex = Random.Range(0, RecipeBook.potions.Count);
             RequestedPotion = RecipeBook.potions[RandomIndex];
-            OrderDisplay.text = "Order:\n" + RequestedPotion.RecipeName;
+            if(OrderDisplay != null)
+            {
+                OrderDisplay.text = "Order:\n" + RequestedPotion.RecipeName;
+            }
+            if (OrderImage != null)
+            {
+                OrderImage.texture = RequestedPotion.OrderTexture;
+            }
             OrderTimestamp = Time.time;
             TipAmount = MaxTip;
         }
