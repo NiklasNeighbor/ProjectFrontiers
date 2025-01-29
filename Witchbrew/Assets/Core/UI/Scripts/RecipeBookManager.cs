@@ -55,7 +55,6 @@ public class RecipeBookManager : MonoBehaviour
         if (recipeBookUI != null)
         {
             recipeBookUI.SetActive(isRecipeBookOpen);
-            firstPersonLook.uiActive = isRecipeBookOpen;
 
             // Lock cursor and disable player camera movement if its open
             Cursor.lockState = isRecipeBookOpen ? CursorLockMode.None : CursorLockMode.Locked;
