@@ -22,7 +22,7 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         
         if (Input.GetKeyDown(KeyCode.E))
         {

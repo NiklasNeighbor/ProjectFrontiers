@@ -19,24 +19,30 @@ public class FirstPersonMovement : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.interpolation = RigidbodyInterpolation.None; // Enable interpolation
     }
 
     void Update()
     {
-        inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        // Read input in Update() for responsiveness
+        inputDirection = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
+
+        // Determine running state
+        IsRunning = canRun && Input.GetKey(runningKey);
     }
 
     void FixedUpdate()
     {
-        IsRunning = canRun && Input.GetKey(runningKey);
-
+        // Get target speed
         float targetSpeed = speedOverrides.Count > 0
             ? speedOverrides[speedOverrides.Count - 1]()
             : (IsRunning ? runSpeed : speed);
 
-        Vector2 targetVelocity = inputDirection * targetSpeed;
-        Vector3 velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+        // Calculate target velocity
+        Vector3 targetVelocity = transform.rotation * new Vector3(inputDirection.x, 0, inputDirection.y) * targetSpeed;
 
-        rigidbody.velocity = velocity;
+        // Move the Rigidbody smoothly
+        Vector3 newPosition = rigidbody.position + targetVelocity * Time.fixedDeltaTime;
+        rigidbody.MovePosition(newPosition);
     }
 }

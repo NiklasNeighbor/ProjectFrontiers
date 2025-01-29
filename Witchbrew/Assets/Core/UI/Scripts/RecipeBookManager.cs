@@ -12,6 +12,7 @@ public class RecipeBookManager : MonoBehaviour
     public TMP_Text pageNumberText; // Text to display the current page number (not used rn)
     public Button nextPageButton; // Button to go to the next page
     public Button previousPageButton; // Button to go to the previous page
+    public FirstPersonLook firstPersonLook;
 
     [Header("Page Button Collections")]
     public GameObject[] pageButtonCollections; // button collections for each page 
@@ -54,6 +55,7 @@ public class RecipeBookManager : MonoBehaviour
         if (recipeBookUI != null)
         {
             recipeBookUI.SetActive(isRecipeBookOpen);
+            firstPersonLook.uiActive = isRecipeBookOpen;
 
             // Lock cursor and disable player camera movement if its open
             Cursor.lockState = isRecipeBookOpen ? CursorLockMode.None : CursorLockMode.Locked;
