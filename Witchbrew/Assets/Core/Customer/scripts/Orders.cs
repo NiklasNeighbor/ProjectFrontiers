@@ -21,12 +21,16 @@ public class Orders : MonoBehaviour
     public float MaxTip = 80;
     public float PotionPrice = 100;
 
+    private Timer timer; // Reference to the Timer script
+
     // Start is called before the first frame update
     void Start()
     {
         GetRandomRecipe();
         CoinDisplay.text = TotalCoins.ToString();
 
+        // Find the Timer script in the scene
+        timer = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class Orders : MonoBehaviour
         {
             int RandomIndex = Random.Range(0, RecipeBook.potions.Count);
             RequestedPotion = RecipeBook.potions[RandomIndex];
-            if(OrderDisplay != null)
+            if (OrderDisplay != null)
             {
                 OrderDisplay.text = "Order:\n" + RequestedPotion.RecipeName;
             }
@@ -68,16 +72,20 @@ public class Orders : MonoBehaviour
         MonoPotion PresentedPotion = other.gameObject.GetComponent<MonoPotion>();
         if (PresentedPotion != null)
         {
-            if(PresentedPotion.recipe == RequestedPotion)
+            if (PresentedPotion.recipe == RequestedPotion)
             {
                 TipAmount = Mathf.Round(TipAmount);
                 TotalCoins = TotalCoins + PotionPrice + TipAmount;
-                CoinDisplay.text =TotalCoins.ToString();
-                
+                CoinDisplay.text = TotalCoins.ToString();
+
+                // Increase time if the potion is correct
+                if (timer != null)
+                {
+                    timer.IncreaseTime(timer.timeIncreaseAmount);
+                }
             }
             Destroy(other.gameObject);
             GetRandomRecipe();
         }
-
     }
 }

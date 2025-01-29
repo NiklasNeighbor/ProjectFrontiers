@@ -6,6 +6,8 @@ public class FirstPersonLook : MonoBehaviour
     Transform character;
     public RecipeBookManager RecipeBookManager;
     public GameObject TutorialPopUp; // Reference to the UI popup GameObject
+    public GameObject WinScreen; // Reference to the Win Screen UI
+    public GameObject LoseScreen; // Reference to the Lose Screen UI
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 
@@ -27,12 +29,18 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
-        // If the Recipe Book is open or the UI popup is active, unlock the cursor and stop camera movement
-        if ((TutorialPopUp != null && TutorialPopUp.activeSelf) || RecipeBookManager.isRecipeBookOpen)
+        // Check if any UI element that should unlock the cursor is active
+        bool shouldUnlockCursor =
+            (TutorialPopUp != null && TutorialPopUp.activeSelf) ||
+            (WinScreen != null && WinScreen.activeSelf) ||
+            (LoseScreen != null && LoseScreen.activeSelf) ||
+            RecipeBookManager.isRecipeBookOpen;
+
+        if (shouldUnlockCursor)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            return; // Exit the update to prevent camera movement
+            return; // Prevent camera movement
         }
         else
         {
@@ -40,22 +48,22 @@ public class FirstPersonLook : MonoBehaviour
             Cursor.visible = false;
         }
 
-        // Only allow mouse look if the recipe book is not open
-        if (!RecipeBookManager.isRecipeBookOpen)
-        {
-            Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-            Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
-            frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
+        // Mouse look only works if the cursor is locked
+        Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
+        frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
 
-            velocity += frameVelocity;
-            velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
-        }
+        velocity += frameVelocity;
+        velocity.y = Mathf.Clamp(velocity.y, lowerClamp, upperClamp);
     }
-
 
     void LateUpdate()
     {
-        if (TutorialPopUp != null && TutorialPopUp.activeSelf) return;
+        // If any UI is open, prevent rotation
+        if ((TutorialPopUp != null && TutorialPopUp.activeSelf) ||
+            (WinScreen != null && WinScreen.activeSelf) ||
+            (LoseScreen != null && LoseScreen.activeSelf))
+            return;
 
         // Apply rotations after all updates
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
