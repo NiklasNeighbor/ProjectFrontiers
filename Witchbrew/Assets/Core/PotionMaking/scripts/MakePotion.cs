@@ -14,8 +14,6 @@ public class recipe
     public Ingredient FirstIngredient;
     public Ingredient SecondIngredient;
     public Ingredient ThirdIngredient;
-
-
 }
 
 public class MakePotion : MonoBehaviour
@@ -30,15 +28,20 @@ public class MakePotion : MonoBehaviour
     public float ExpelForce = 200f;
 
     public TMP_Text failMessageText;
+    public TMP_Text ingredientText;
 
     [Header("VFX")]
     public GameObject failVFXPrefab;
     public Transform explosionLocation; // Reference to the location where the explosion will happen
 
+    void Start()
+    {
+        UpdateIngredientText(); // Ensure UI starts at "0/3"
+    }
 
     void Update()
     {
-        if(HasIngredients())
+        if (HasIngredients())
         {
             CheckRecipes();
         }
@@ -46,65 +49,40 @@ public class MakePotion : MonoBehaviour
 
     public bool HasIngredients()
     {
-        if (ingredients[0].type != Ingredient.ingredient.None && ingredients[1].type != Ingredient.ingredient.None && ingredients[2].type != Ingredient.ingredient.None)
-        {
-            return true;
-        }
-        return false;
+        return (ingredients[0].type != Ingredient.ingredient.None &&
+                ingredients[1].type != Ingredient.ingredient.None &&
+                ingredients[2].type != Ingredient.ingredient.None);
     }
 
     public void CheckRecipes()
     {
         foreach (recipe recipe in potions)
         {
-            bool HasIngredient1 = false;
-            bool HasIngredient2 = false;
-            bool HasIngredient3 = false;
+            bool HasIngredient1 = CheckForIngredient(recipe.FirstIngredient);
+            bool HasIngredient2 = CheckForIngredient(recipe.SecondIngredient);
+            bool HasIngredient3 = CheckForIngredient(recipe.ThirdIngredient);
 
-            if (CheckForIngredient(recipe.FirstIngredient) && !HasIngredient1)
+            // If all three ingredients match a recipe
+            if (HasIngredient1 && HasIngredient2 && HasIngredient3)
             {
-                HasIngredient1 = true;
-            }
-
-            if (CheckForIngredient(recipe.SecondIngredient) && !HasIngredient2)
-            {
-                HasIngredient2 = true;
-            }
-
-            if (CheckForIngredient(recipe.ThirdIngredient) && !HasIngredient3)
-            {
-                HasIngredient3 = true;
-            }
-
-            //What happens when the ingredients were correct
-            if(HasIngredient1 && HasIngredient2 && HasIngredient3)
-            {
-
-                Debug.Log("created potion: " + recipe.RecipeName);
-                Debug.Log("Ingredients: " + ingredients[0].prep + " " + ingredients[0].type + ", " + ingredients[1].prep + " " + ingredients[1].type + ", " + ingredients[2].prep + " " + ingredients[2].type);
-
+                Debug.Log("Created potion: " + recipe.RecipeName);
                 PotionSuccess(recipe);
-
-                ingredients[0].type = Ingredient.ingredient.None;
-                ingredients[1].type = Ingredient.ingredient.None;
-                ingredients[2].type = Ingredient.ingredient.None;
+                ResetIngredients();
                 return;
             }
         }
-        PotionFail();
 
-        ingredients[0].type = Ingredient.ingredient.None;
-        ingredients[1].type = Ingredient.ingredient.None;
-        ingredients[2].type = Ingredient.ingredient.None;
+        // If no recipe matched
+        PotionFail();
+        ResetIngredients();
     }
 
     public bool CheckForIngredient(Ingredient RightIngredient)
     {
-        foreach(Ingredient ingredient in ingredients)
+        foreach (Ingredient ingredient in ingredients)
         {
-            if ((ingredient.type == RightIngredient.type) && (ingredient.prep == RightIngredient.prep))
+            if (ingredient.type == RightIngredient.type && ingredient.prep == RightIngredient.prep)
             {
-                
                 return true;
             }
         }
@@ -113,24 +91,21 @@ public class MakePotion : MonoBehaviour
 
     public void PotionSuccess(recipe FinalPotion)
     {
-        //Insert code for successful recipe here
         if (FinalPotion.PotionProduct != null)
         {
-            //spawn the potion and get references
-            GameObject Product = Instantiate(FinalPotion.PotionProduct, gameObject.transform.position + Vector3.up, Quaternion.identity);
+            GameObject Product = Instantiate(FinalPotion.PotionProduct, transform.position + Vector3.up, Quaternion.identity);
             Rigidbody rb = Product.GetComponent<Rigidbody>();
             MonoPotion ProductRecipe = rb.GetComponent<MonoPotion>();
             ProductRecipe.recipe = FinalPotion;
 
-            //add some fun physics
             float x = UnityEngine.Random.Range(-50f, 50f);
             float z = UnityEngine.Random.Range(-50f, 50f);
             rb.AddForce(new Vector3(x, ExpelForce, z));
+
             x = UnityEngine.Random.Range(-20f, 20f);
             z = UnityEngine.Random.Range(-20f, 20f);
             float y = UnityEngine.Random.Range(-20f, 20f);
             rb.AddTorque(new Vector3(x, y, z));
-
         }
     }
 
@@ -153,33 +128,52 @@ public class MakePotion : MonoBehaviour
 
     private IEnumerator DisplayFailMessage()
     {
-        failMessageText.text = "Wrong ingredients!"; // Set the text to show
-        failMessageText.gameObject.SetActive(true); // Make sure the text is visible
+        failMessageText.text = "Wrong ingredients!";
+        failMessageText.gameObject.SetActive(true);
 
-        // Wait for 1 second
         yield return new WaitForSeconds(3f);
 
-        failMessageText.gameObject.SetActive(false); // Hide the message after 1 second
+        failMessageText.gameObject.SetActive(false);
     }
-
-
 
     public void OnTriggerEnter(Collider other)
     {
         MonoIngredient NewIngredient = other.gameObject.GetComponent<MonoIngredient>();
-        
+
         if (NewIngredient != null)
         {
             for (int i = 0; i < ingredients.Length; i++)
             {
                 if (ingredients[i].type == Ingredient.ingredient.None)
                 {
-                    Debug.Log("Added ingredient to: " + ingredients[i]);
                     ingredients[i] = NewIngredient.Ingredient;
                     Destroy(other.gameObject);
+                    UpdateIngredientText(); // Update UI when ingredient is added
                     return;
                 }
             }
         }
+    }
+
+    private void UpdateIngredientText()
+    {
+        int count = 0;
+        foreach (var ingredient in ingredients)
+        {
+            if (ingredient.type != Ingredient.ingredient.None)
+            {
+                count++;
+            }
+        }
+        ingredientText.text = $"{count}/3"; // Update UI
+    }
+
+    private void ResetIngredients()
+    {
+        for (int i = 0; i < ingredients.Length; i++)
+        {
+            ingredients[i].type = Ingredient.ingredient.None;
+        }
+        UpdateIngredientText(); // Reset UI to "0/3"
     }
 }
