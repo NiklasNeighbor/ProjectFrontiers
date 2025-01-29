@@ -32,7 +32,7 @@ public class ResourceSpawner : MonoBehaviour
 
     GameObject SpawnResource()
     {
-        GameObject lastObject = Instantiate(WildResourceToSpawn, GetRandomPosition(), Quaternion.identity);
+        GameObject lastObject = Instantiate(WildResourceToSpawn, GetRandomPosition(), transform.rotation);
         WildResource wildResource = lastObject.GetComponent<WildResource>();
         wildResource.Destination = StashHandler;
         wildResource.InteractionManager = InteractionManager;
