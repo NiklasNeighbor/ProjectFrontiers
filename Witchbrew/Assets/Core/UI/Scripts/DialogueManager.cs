@@ -41,6 +41,8 @@ public class DialogueManager : MonoBehaviour
         public Line[] lines;
         public VideoClip videoClip;
         public GameObject backgroundGameObject; // Background GameObject for this dialogue
+        public GameObject specificGameObject; // gameobject that should be activated for this dialogue
+        public bool keepActiveAfterDialogue;
     }
 
     public Dialogue[] dialogues;
@@ -52,12 +54,12 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
 
     public VideoPlayer videoPlayer;
-
     public Timer timer; // Reference to the Timer script
+
+    private GameObject activeGameObject; // Stores the currently active GameObject
 
     void Start()
     {
-        // Ensure the UI starts hidden and backgrounds are deactivated
         if (dialogueUI != null)
             dialogueUI.SetActive(false);
 
@@ -81,11 +83,11 @@ public class DialogueManager : MonoBehaviour
 
         if (isDialogueActive)
         {
-            timer.PauseTimer();  // Pause timer during dialogue
+            timer.PauseTimer();
         }
         else
         {
-            timer.ResumeTimer();  // Resume timer once dialogue ends
+            timer.ResumeTimer();
         }
     }
 
@@ -95,40 +97,35 @@ public class DialogueManager : MonoBehaviour
         {
             StopAllCoroutines();
             currentDialogueIndex = dialogueIndex;
-            currentLineIndex = 0; // Reset to 0
+            currentLineIndex = 0;
             isDialogueActive = true;
             isTyping = false;
 
             if (dialogueUI != null)
                 dialogueUI.SetActive(true);
-            LoadDialogue(); // Call LoadDialogue instead of ShowNextLine
-        }
 
-        if (dialogueIndex >= 0 && dialogueIndex < dialogues.Length)
-        {
-            currentDialogueIndex = dialogueIndex;
-            currentLineIndex = 0;
-            isDialogueActive = true;
-
-            // Stop any ongoing typing before starting the new dialogue
-            StopTypingCoroutine();
-
-            // Show the dialogue UI
-            if (dialogueUI != null)
-                dialogueUI.SetActive(true);
-
-            // Update background and play music if available
+            // Hide all previous backgrounds
             foreach (var bg in backgrounds)
             {
                 if (bg != null)
-                    bg.SetActive(false); // Hide all backgrounds initially
+                    bg.SetActive(false);
             }
 
+            // Activate the background for this dialogue
             GameObject dialogueBackground = dialogues[currentDialogueIndex].backgroundGameObject;
             if (dialogueBackground != null)
-                dialogueBackground.SetActive(true); // Show the background for this dialogue
+                dialogueBackground.SetActive(true);
 
-            // Play the video if specified
+            // Deactivate previously active GameObject
+            if (activeGameObject != null)
+                activeGameObject.SetActive(false);
+
+            // Activate specific GameObject for this dialogue
+            activeGameObject = dialogues[currentDialogueIndex].specificGameObject;
+            if (activeGameObject != null)
+                activeGameObject.SetActive(true);
+
+            // Play video if available
             VideoClip videoClip = dialogues[currentDialogueIndex].videoClip;
             if (videoPlayer != null)
             {
@@ -144,11 +141,10 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-            // Start displaying the dialogue lines
             LoadDialogue();
         }
 
-        ShowNextLine(); // Start with the first line
+        ShowNextLine();
     }
 
     public void EndDialogue()
@@ -173,10 +169,15 @@ public class DialogueManager : MonoBehaviour
         foreach (var bg in backgrounds)
         {
             if (bg != null)
-                bg.SetActive(false); // Deactivate all backgrounds when dialogue ends
+                bg.SetActive(false);
         }
 
-        // Resume timer after ending the dialogue
+        if (activeGameObject != null && !dialogues[currentDialogueIndex].keepActiveAfterDialogue)
+        {
+            activeGameObject.SetActive(false);
+            activeGameObject = null;
+        }
+
         if (timer != null)
         {
             timer.ResumeTimer();
@@ -190,16 +191,14 @@ public class DialogueManager : MonoBehaviour
         if (characterNameText != null)
             characterNameText.text = currentDialogue.characterName;
 
-        DisplayCurrentLine(); // Call new method to display the current line
+        DisplayCurrentLine();
     }
-
 
     public void ShowNextLine()
     {
-        currentLineIndex++; // Increment the line index first
-        DisplayCurrentLine(); // Then display the current (next) line
+        currentLineIndex++;
+        DisplayCurrentLine();
     }
-
 
     void DisplayCurrentLine()
     {
@@ -223,8 +222,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
-
     IEnumerator TypeText(string line)
     {
         isTyping = true;
@@ -237,33 +234,32 @@ public class DialogueManager : MonoBehaviour
         }
 
         isTyping = false;
-        // Signal that typing is complete, allowing for automatic progression if needed
-        yield return new WaitForSeconds(1f); // Optional: Wait a bit after typing finishes
+        yield return new WaitForSeconds(1f);
         if (Input.GetKey(nextKey))
         {
             ShowNextLine();
         }
     }
 
-
     public void StopTypingCoroutine()
     {
         if (typingCoroutine != null)
         {
-            StopCoroutine(typingCoroutine); // Stop any active typing coroutine
-            typingCoroutine = null;         // Clear the reference
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
 
         if (dialogueText != null)
         {
-            dialogueText.text = ""; // Clear the dialogue text field
+            dialogueText.text = "";
         }
 
-        isTyping = false; // Ensure the typing flag is reset
+        isTyping = false;
     }
 
     public GameObject GoodEndVideo;
     public GameObject BadEndVideo;
+
     public void CheckGameEnd()
     {
         Timer timer = FindObjectOfType<Timer>();
@@ -292,5 +288,5 @@ public class DialogueManager : MonoBehaviour
 
         StartDialogue(dialogueIndex);
     }
-
 }
+
