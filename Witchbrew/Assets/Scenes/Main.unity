@@ -287,17 +287,17 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 97354828949d74b409fb8aa8a489507f,
         type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97354828949d74b409fb8aa8a489507f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 97354828949d74b409fb8aa8a489507f,
         type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59532,7 +59532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 383606402}
   fillImage: {fileID: 2049181736}
-  startTime: 3
+  startTime: 240
   TutorialPopUp: {fileID: 2016549615}
   enableTimeIncrease: 1
   timeIncreaseAmount: 20
@@ -68768,6 +68768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874303605532529975, guid: 98f3b1aaca67b5d4e827aed44b9fa5d1,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 255
       objectReference: {fileID: 0}
     - target: {fileID: 4059488214017920926, guid: 98f3b1aaca67b5d4e827aed44b9fa5d1,
         type: 3}
