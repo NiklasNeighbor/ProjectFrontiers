@@ -9,6 +9,8 @@ public class WildResource : MonoBehaviour
     public StashHandler Destination;
     public InteractionManager InteractionManager;
     public GameObject vfxPrefab;
+    public AudioClip pickUpSound;
+    public float sfxVolume = 1f;
 
     void Start()
     {
@@ -32,6 +34,11 @@ public class WildResource : MonoBehaviour
                 if (vfxPrefab != null)
                 {
                     Instantiate(vfxPrefab, transform.position, transform.rotation);
+                }
+
+                if (pickUpSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(pickUpSound, transform.position, sfxVolume);
                 }
 
                 // Update the stash value
