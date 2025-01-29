@@ -12,9 +12,20 @@ public class WildResource : MonoBehaviour
     public AudioClip pickUpSound;
     public float sfxVolume = 1f;
 
+    private static AudioSource globalAudioSource; // Static reference to the global AudioSource
+
     void Start()
     {
         gameObject.tag = "Pickup";
+
+        // Find or create the global AudioSource
+        if (globalAudioSource == null)
+        {
+            GameObject audioSourceObject = new GameObject("GlobalAudioSource");
+            globalAudioSource = audioSourceObject.AddComponent<AudioSource>();
+            globalAudioSource.spatialBlend = 0; // Set to 2D audio
+            DontDestroyOnLoad(audioSourceObject); // Make it persistent
+        }
     }
 
     void Update()
@@ -36,9 +47,10 @@ public class WildResource : MonoBehaviour
                     Instantiate(vfxPrefab, transform.position, transform.rotation);
                 }
 
-                if (pickUpSound != null)
+                // Play the pickup sound using the global AudioSource
+                if (pickUpSound != null && globalAudioSource != null)
                 {
-                    AudioSource.PlayClipAtPoint(pickUpSound, transform.position, sfxVolume);
+                    globalAudioSource.PlayOneShot(pickUpSound, sfxVolume);
                 }
 
                 // Update the stash value

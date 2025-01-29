@@ -42,7 +42,14 @@ public class IngredientProcessor : MonoBehaviour
     public Transform spawnLocation; // Reference to the location where the processed ingredient will be spawned
 
     [Header("VFX Prefab")]
-    public GameObject vfxPrefab; 
+    public GameObject vfxPrefab;
+
+    [Header("SFX Settings")]
+    public AudioClip slicerSFX;
+    public AudioClip roasterSFX;
+    public AudioClip grinderSFX;
+
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -50,6 +57,13 @@ public class IngredientProcessor : MonoBehaviour
         if (progressBar != null)
         {
             initialScale = progressBar.localScale;
+        }
+
+        // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on IngredientProcessor.");
         }
     }
 
@@ -65,13 +79,44 @@ public class IngredientProcessor : MonoBehaviour
         {
             isProcessing = true;
 
+            // Play VFX
             if (vfxPrefab != null)
             {
                 Instantiate(vfxPrefab, collision.transform.position, collision.transform.rotation);
             }
 
+            // Play SFX based on processor type
+            PlayProcessorSFX();
+
             Destroy(collision.gameObject);
             StartCoroutine(SpawnProcessedVersion(transformation));
+        }
+    }
+
+    private void PlayProcessorSFX()
+    {
+        if (audioSource == null) return;
+
+        switch (processorType)
+        {
+            case ProcessorType.Slicer:
+                if (slicerSFX != null)
+                {
+                    audioSource.PlayOneShot(slicerSFX);
+                }
+                break;
+            case ProcessorType.Roaster:
+                if (roasterSFX != null)
+                {
+                    audioSource.PlayOneShot(roasterSFX);
+                }
+                break;
+            case ProcessorType.Grinder:
+                if (grinderSFX != null)
+                {
+                    audioSource.PlayOneShot(grinderSFX);
+                }
+                break;
         }
     }
 
@@ -143,6 +188,12 @@ public class IngredientProcessor : MonoBehaviour
             Vector3 spawnPosition = spawnLocation != null ? spawnLocation.position : transform.position;
             GameObject processedObject = Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation);
             processedObject.layer = LayerMask.NameToLayer(processedLayer);
+
+            // Stop the SFX immediately after spawning the new prefab
+            if (audioSource != null)
+            {
+                audioSource.Stop();
+            }
         }
 
         // Hide progress bar after processing

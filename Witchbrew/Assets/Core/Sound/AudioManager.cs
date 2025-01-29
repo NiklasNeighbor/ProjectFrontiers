@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,22 +11,37 @@ public class AudioManager : MonoBehaviour
     private Dictionary<string, AudioClip> musicDictionary;
     public AudioSource TargetAudioSource;
 
+    public SceneMusicConfig[] sceneMusicConfigs; // Array of scene-specific music configurations
+
     private void Awake()
     {
-        
+        // If no instance exists, set this object as the instance and don't destroy on load
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Prevents the object from being destroyed when loading a new scene
         }
         else
         {
-            Destroy(gameObject); 
+            // If an instance already exists, destroy the new duplicate
+            Destroy(gameObject);
+            return;
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to the sceneLoaded event
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlaySceneSong(); // Play the appropriate song for the new scene
+    }
 
+    private void OnDestroy()
+    {
+        // Unsubscribe from the event to avoid memory leaks
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         musicDictionary = new Dictionary<string, AudioClip>();
@@ -34,37 +50,62 @@ public class AudioManager : MonoBehaviour
             if (!musicDictionary.ContainsKey(entry.SongKey))
             {
                 musicDictionary.Add(entry.SongKey, entry.Music);
-            } else
+            }
+            else
             {
                 Debug.LogWarning("Duplicate Key for the Music found in AudioManager! Ensure each Key is unique!");
             }
         }
+
+        // Play the appropriate song for the current scene
+        PlaySceneSong();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlaySceneSong()
     {
-        
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Find the song key for the current scene
+        foreach (var config in sceneMusicConfigs)
+        {
+            if (config.sceneName == currentSceneName)
+            {
+                PlaySong(config.songKey);
+                return;
+            }
+        }
+
+        Debug.LogWarning($"No song configured for scene: {currentSceneName}");
     }
 
     public void PlaySong(string Key)
     {
-        TargetAudioSource.Stop();
-        TargetAudioSource.clip = musicDictionary[Key];
-        TargetAudioSource.Play();
+        if (musicDictionary.ContainsKey(Key))
+        {
+            TargetAudioSource.Stop();
+            TargetAudioSource.clip = musicDictionary[Key];
+            TargetAudioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Song key not found: " + Key);
+        }
     }
+
+    public bool IsPlaying(string songKey)
+    {
+        if (musicDictionary.ContainsKey(songKey))
+        {
+            return TargetAudioSource.clip == musicDictionary[songKey];
+        }
+        Debug.LogWarning($"Song key not found: {songKey}");
+        return false;
+    }
+
     public void StopSong()
     {
         TargetAudioSource.Stop();
     }
-
-
-
-
-    //MOSTLY AI GENERATED CODE BELOW
-    //I CAN NOT BE BOTHERED TO LEARN COROUTINES RIGHT NOW
-    //WILL POSSIBLY BE REVISED LATER
-
 
     public void Crossfade(string Key, float duration = 1.5f)
     {

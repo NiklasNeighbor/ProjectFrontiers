@@ -57,7 +57,7 @@ public class FirstPersonLook : MonoBehaviour
         velocity.y = Mathf.Clamp(velocity.y + frameVelocity.y, lowerClamp, upperClamp);
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         // If any UI is open, prevent rotation
         if ((TutorialPopUp != null && TutorialPopUp.activeSelf) ||

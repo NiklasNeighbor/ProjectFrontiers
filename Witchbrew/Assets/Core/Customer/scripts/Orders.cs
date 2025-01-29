@@ -21,6 +21,12 @@ public class Orders : MonoBehaviour
     public float MaxTip = 80;
     public float PotionPrice = 100;
 
+    [Header("SFX Settings")]
+    public AudioClip correctPotionSFX; // Sound effect for correct potion
+    public AudioClip wrongPotionSFX;   // Sound effect for wrong potion
+
+    public AudioSource audioSource; // Reference to the existing AudioSource
+
     private Timer timer; // Reference to the Timer script
 
     // Start is called before the first frame update
@@ -31,6 +37,12 @@ public class Orders : MonoBehaviour
 
         // Find the Timer script in the scene
         timer = FindObjectOfType<Timer>();
+
+        // Ensure the AudioSource is assigned
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource not assigned in the Inspector.");
+        }
     }
 
     // Update is called once per frame
@@ -82,6 +94,20 @@ public class Orders : MonoBehaviour
                 if (timer != null)
                 {
                     timer.IncreaseTime(timer.timeIncreaseAmount);
+                }
+
+                // Play the correct potion sound effect
+                if (correctPotionSFX != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(correctPotionSFX);
+                }
+            }
+            else
+            {
+                // Play the wrong potion sound effect
+                if (wrongPotionSFX != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(wrongPotionSFX);
                 }
             }
             Destroy(other.gameObject);
