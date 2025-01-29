@@ -141,7 +141,7 @@ public class IngredientProcessor : MonoBehaviour
         {
             // Use the spawnLocation to instantiate the object at a set location
             Vector3 spawnPosition = spawnLocation != null ? spawnLocation.position : transform.position;
-            GameObject processedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            GameObject processedObject = Instantiate(prefabToSpawn, spawnPosition, spawnLocation.rotation);
             processedObject.layer = LayerMask.NameToLayer(processedLayer);
         }
 
