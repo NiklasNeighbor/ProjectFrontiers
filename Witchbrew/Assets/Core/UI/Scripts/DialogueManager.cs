@@ -41,6 +41,8 @@ public class DialogueManager : MonoBehaviour
         public Line[] lines;
         public VideoClip videoClip;
         public GameObject backgroundGameObject; // Background GameObject for this dialogue
+        public GameObject specificGameObject; // gameobject that should be activated for this dialogue
+        public bool keepActiveAfterDialogue;
     }
 
     public Dialogue[] dialogues;
@@ -52,12 +54,12 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
 
     public VideoPlayer videoPlayer;
-
     public Timer timer; // Reference to the Timer script
+
+    private GameObject activeGameObject; // Stores the currently active GameObject
 
     void Start()
     {
-        // Ensure the UI starts hidden and backgrounds are deactivated
         if (dialogueUI != null)
             dialogueUI.SetActive(false);
 
@@ -68,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         timer = FindObjectOfType<Timer>();
-            
+
         StartDialogue(0); // Optionally start with the first dialogue
     }
 
@@ -83,43 +85,47 @@ public class DialogueManager : MonoBehaviour
         {
             timer.PauseTimer();
         }
-
         else
         {
             timer.ResumeTimer();
         }
-
     }
 
     public void StartDialogue(int dialogueIndex)
     {
         if (dialogueIndex >= 0 && dialogueIndex < dialogues.Length)
         {
+            StopAllCoroutines();
             currentDialogueIndex = dialogueIndex;
             currentLineIndex = 0;
             isDialogueActive = true;
+            isTyping = false;
 
             if (dialogueUI != null)
                 dialogueUI.SetActive(true);
 
-            if (backgroundMusic != null && dialogueMusic != null)
-            {
-                backgroundMusic.clip = dialogueMusic;
-                backgroundMusic.Play();
-            }
-
-            // Manage background visibility
+            // Hide all previous backgrounds
             foreach (var bg in backgrounds)
             {
                 if (bg != null)
-                    bg.SetActive(false); // Deactivate all backgrounds
+                    bg.SetActive(false);
             }
 
+            // Activate the background for this dialogue
             GameObject dialogueBackground = dialogues[currentDialogueIndex].backgroundGameObject;
             if (dialogueBackground != null)
-                dialogueBackground.SetActive(true); // Activate the background for this dialogue
+                dialogueBackground.SetActive(true);
 
-            // Play video if specified
+            // Deactivate previously active GameObject
+            if (activeGameObject != null)
+                activeGameObject.SetActive(false);
+
+            // Activate specific GameObject for this dialogue
+            activeGameObject = dialogues[currentDialogueIndex].specificGameObject;
+            if (activeGameObject != null)
+                activeGameObject.SetActive(true);
+
+            // Play video if available
             VideoClip videoClip = dialogues[currentDialogueIndex].videoClip;
             if (videoPlayer != null)
             {
@@ -137,6 +143,8 @@ public class DialogueManager : MonoBehaviour
 
             LoadDialogue();
         }
+
+        ShowNextLine();
     }
 
     public void EndDialogue()
@@ -161,7 +169,18 @@ public class DialogueManager : MonoBehaviour
         foreach (var bg in backgrounds)
         {
             if (bg != null)
-                bg.SetActive(false); // Deactivate all backgrounds when dialogue ends
+                bg.SetActive(false);
+        }
+
+        if (activeGameObject != null && !dialogues[currentDialogueIndex].keepActiveAfterDialogue)
+        {
+            activeGameObject.SetActive(false);
+            activeGameObject = null;
+        }
+
+        if (timer != null)
+        {
+            timer.ResumeTimer();
         }
     }
 
@@ -172,10 +191,16 @@ public class DialogueManager : MonoBehaviour
         if (characterNameText != null)
             characterNameText.text = currentDialogue.characterName;
 
-        ShowNextLine();
+        DisplayCurrentLine();
     }
 
     public void ShowNextLine()
+    {
+        currentLineIndex++;
+        DisplayCurrentLine();
+    }
+
+    void DisplayCurrentLine()
     {
         Dialogue currentDialogue = dialogues[currentDialogueIndex];
 
@@ -188,15 +213,8 @@ public class DialogueManager : MonoBehaviour
                 characterImage.sprite = currentLine.characterSprite;
             }
 
-            if (dialogueText != null)
-            {
-                if (typingCoroutine != null)
-                    StopCoroutine(typingCoroutine);
-
-                typingCoroutine = StartCoroutine(TypeText(currentLine.text));
-            }
-
-            currentLineIndex++;
+            StopTypingCoroutine();
+            typingCoroutine = StartCoroutine(TypeText(currentLine.text));
         }
         else
         {
@@ -216,12 +234,59 @@ public class DialogueManager : MonoBehaviour
         }
 
         isTyping = false;
+        yield return new WaitForSeconds(1f);
+        if (Input.GetKey(nextKey))
+        {
+            ShowNextLine();
+        }
     }
 
-    
+    public void StopTypingCoroutine()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
 
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
 
+        isTyping = false;
+    }
 
+    public GameObject GoodEndVideo;
+    public GameObject BadEndVideo;
 
+    public void CheckGameEnd()
+    {
+        Timer timer = FindObjectOfType<Timer>();
+        if (timer != null)
+        {
+            timer.PauseTimer();
+            timer.enabled = false;
+        }
 
+        float coinThreshold = 400;
+        int dialogueIndex;
+        if (FindObjectOfType<Orders>().TotalCoins >= coinThreshold)
+        {
+            dialogueIndex = 1;
+            if (GoodEndVideo != null) GoodEndVideo.SetActive(true);
+        }
+        else
+        {
+            dialogueIndex = 2;
+            if (BadEndVideo != null) BadEndVideo.SetActive(true);
+        }
+
+        StopAllCoroutines();
+        if (dialogueUI != null)
+            dialogueUI.SetActive(true);
+
+        StartDialogue(dialogueIndex);
+    }
 }
+

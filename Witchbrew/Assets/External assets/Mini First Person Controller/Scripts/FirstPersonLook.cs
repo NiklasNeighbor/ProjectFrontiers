@@ -5,6 +5,8 @@ public class FirstPersonLook : MonoBehaviour
     [SerializeField]
     Transform character;
     public GameObject TutorialPopUp; // Reference to the UI popup GameObject
+    public GameObject WinScreen; // Reference to the Win Screen UI
+    public GameObject LoseScreen; // Reference to the Lose Screen UI
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destination: {fileID: 0}
   InteractionManager: {fileID: 0}
+  vfxPrefab: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    type: 3}
 --- !u!1 &7924278838083840887
 GameObject:
   m_ObjectHideFlags: 0

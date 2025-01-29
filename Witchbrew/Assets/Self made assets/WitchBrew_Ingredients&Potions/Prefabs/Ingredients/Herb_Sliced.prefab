@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2767277525016806210}
   - component: {fileID: 2131653921073926003}
   - component: {fileID: 7031251901114425274}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 548808190459224630}
   - component: {fileID: 8546605865129979995}
   - component: {fileID: 5418616327991584149}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3881639760866189845}
   - component: {fileID: 4088437320173956573}
   - component: {fileID: 874892920401412962}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 871357019593593912}
   - component: {fileID: 3671696155244892062}
   - component: {fileID: 1249887497109975689}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Herb_Stem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 1954359276865992186}
   - component: {fileID: 8527371185935132455}
   - component: {fileID: 312323952573727855}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3212812222702035798}
   - component: {fileID: 7562249631020666729}
   - component: {fileID: 1352907935070405892}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 4686396054245473203}
   - component: {fileID: 8631074662009876859}
   - component: {fileID: 8113551533906761698}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 3887836953904298362}
   - component: {fileID: 3345724432777006876}
   - component: {fileID: 4260257086362437327}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Leaf_27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: -6414128259575739054}
   - component: {fileID: 483558356946016037}
   - component: {fileID: -8550621702979616720}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Herb_Sliced
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -740,8 +740,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 31.280573, y: 12.972418, z: 13.261078}
-  m_Center: {x: -21.450365, y: 1.6833173, z: -1.6624985}
+  m_Size: {x: 30.535568, y: 10.598266, z: 13.261078}
+  m_Center: {x: -21.82287, y: 0.49623865, z: -1.6624985}
 --- !u!54 &-8550621702979616720
 Rigidbody:
   m_ObjectHideFlags: 0

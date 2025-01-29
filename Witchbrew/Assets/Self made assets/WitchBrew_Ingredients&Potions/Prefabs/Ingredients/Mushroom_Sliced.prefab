@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6722083441283805061}
   - component: {fileID: -1660732545012425047}
   - component: {fileID: -462797812016730625}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Sliced
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231102641864053453}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.6788171, w: 0.7343074}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.0559076, y: 0.061122, z: 1.0465649}
   m_LocalScale: {x: 0.017838594, y: 0.017838594, z: 0.017838594}
   m_ConstrainProportionsScale: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 1057581544195360247}
   - {fileID: 8640667412490555948}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &-6722083441283805061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1057581544195360247}
   - component: {fileID: 9128691856268614905}
   - component: {fileID: 8677192498052128733}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Head1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 8640667412490555948}
   - component: {fileID: 3185692728360051011}
   - component: {fileID: 6101046947296474900}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Mushroom_Stem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

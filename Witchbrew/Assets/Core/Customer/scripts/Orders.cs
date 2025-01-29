@@ -10,6 +10,7 @@ public class Orders : MonoBehaviour
     public MakePotion RecipeBook;
 
     public TMP_Text OrderDisplay;
+    public RawImage OrderImage;
     public TMP_Text CoinDisplay;
 
     public float OrderTimestamp;
@@ -20,12 +21,16 @@ public class Orders : MonoBehaviour
     public float MaxTip = 80;
     public float PotionPrice = 100;
 
+    private Timer timer; // Reference to the Timer script
+
     // Start is called before the first frame update
     void Start()
     {
         GetRandomRecipe();
-        CoinDisplay.text = "Coins: " + TotalCoins.ToString();
+        CoinDisplay.text = TotalCoins.ToString();
 
+        // Find the Timer script in the scene
+        timer = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -40,7 +45,14 @@ public class Orders : MonoBehaviour
         {
             int RandomIndex = Random.Range(0, RecipeBook.potions.Count);
             RequestedPotion = RecipeBook.potions[RandomIndex];
-            OrderDisplay.text = "Order:\n" + RequestedPotion.RecipeName;
+            if (OrderDisplay != null)
+            {
+                OrderDisplay.text = "Order:\n" + RequestedPotion.RecipeName;
+            }
+            if (OrderImage != null)
+            {
+                OrderImage.texture = RequestedPotion.OrderTexture;
+            }
             OrderTimestamp = Time.time;
             TipAmount = MaxTip;
         }
@@ -60,16 +72,20 @@ public class Orders : MonoBehaviour
         MonoPotion PresentedPotion = other.gameObject.GetComponent<MonoPotion>();
         if (PresentedPotion != null)
         {
-            if(PresentedPotion.recipe == RequestedPotion)
+            if (PresentedPotion.recipe == RequestedPotion)
             {
                 TipAmount = Mathf.Round(TipAmount);
                 TotalCoins = TotalCoins + PotionPrice + TipAmount;
-                CoinDisplay.text = "Coins: " + TotalCoins.ToString();
-                
+                CoinDisplay.text = TotalCoins.ToString();
+
+                // Increase time if the potion is correct
+                if (timer != null)
+                {
+                    timer.IncreaseTime(timer.timeIncreaseAmount);
+                }
             }
             Destroy(other.gameObject);
             GetRandomRecipe();
         }
-
     }
 }

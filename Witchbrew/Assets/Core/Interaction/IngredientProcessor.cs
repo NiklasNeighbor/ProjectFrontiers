@@ -12,66 +12,73 @@ public class IngredientProcessor : MonoBehaviour
     }
 
     [Header("Processor Settings")]
-    public ProcessorType processorType; // Slicer, Roaster, Grinder
+    public ProcessorType processorType;
 
     [System.Serializable]
     public class IngredientTransformation
     {
-        public GameObject ingredientPrefab; // The ingredient prefab (e.g., RedCube, GreenCube)
-        public GameObject slicedVersion; // Sliced version prefab
-        public GameObject roastedVersion; // Roasted version prefab
-        public GameObject grindedVersion; // Grinded version prefab
+        public GameObject ingredientPrefab;
+        public GameObject slicedVersion;
+        public GameObject roastedVersion;
+        public GameObject grindedVersion;
     }
 
     [Header("Ingredient Transformations")]
-    public List<IngredientTransformation> ingredientTransformations; // List of transformations
+    public List<IngredientTransformation> ingredientTransformations;
 
-    public float spawnDelay = 2f; // Delay before spawning the processed version
+    public float spawnDelay = 2f;
 
-    private bool isProcessing = false; // Lock to prevent multiple processes at the same time
+    private bool isProcessing = false;
 
     [Header("Layers")]
-    public string ingredientLayer = "Ingredient"; // Layer for the original ingredient objects
-    public string processedLayer = "Processed";  // Layer for the processed objects
+    public string ingredientLayer = "Ingredient";
+    public string processedLayer = "Processed";
+
+    [Header("Progress Bar")]
+    public Transform progressBar; // Reference to the progress bar object
+    private Vector3 initialScale; // Initial scale of the progress bar
+
+    [Header("Spawn Settings")]
+    public Transform spawnLocation; // Reference to the location where the processed ingredient will be spawned
+
+    [Header("VFX Prefab")]
+    public GameObject vfxPrefab; 
+
+    private void Start()
+    {
+        // Store the initial scale of the progress bar
+        if (progressBar != null)
+        {
+            initialScale = progressBar.localScale;
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If the processor is already handling an object, ignore this collision
         if (isProcessing) return;
 
-        // Check if the object is on the correct layer
         if (collision.gameObject.layer != LayerMask.NameToLayer(ingredientLayer)) return;
 
-        // Check if the colliding object matches a known ingredient prefab
         IngredientTransformation transformation = FindIngredientTransformation(collision.gameObject);
 
         if (transformation != null)
         {
-            // Debug log to show the detected ingredient
-            Debug.Log($"Processing ingredient: {collision.gameObject.name}");
-
-            // Set the lock to prevent further processing
             isProcessing = true;
 
-            // Destroy the original object
-            Destroy(collision.gameObject);
-            Debug.Log($"Destroyed ingredient: {collision.gameObject.name}"); // Log destruction
+            if (vfxPrefab != null)
+            {
+                Instantiate(vfxPrefab, collision.transform.position, collision.transform.rotation);
+            }
 
-            // Start spawning the processed version
-            StartCoroutine(SpawnProcessedVersion(transformation, collision.transform.position));
-        }
-        else
-        {
-            Debug.LogWarning($"No transformation found for: {collision.gameObject.name}");
+            Destroy(collision.gameObject);
+            StartCoroutine(SpawnProcessedVersion(transformation));
         }
     }
 
     private IngredientTransformation FindIngredientTransformation(GameObject ingredient)
     {
-        // Check each transformation and compare the prefab reference directly
         foreach (IngredientTransformation transformation in ingredientTransformations)
         {
-            // Compare the prefab references directly without relying on the tag
             if (ingredient != null && IsSamePrefab(ingredient, transformation.ingredientPrefab))
             {
                 return transformation;
@@ -80,17 +87,39 @@ public class IngredientProcessor : MonoBehaviour
         return null;
     }
 
-    // Helper method to compare the collided object prefab with the stored prefab in transformations list
     private bool IsSamePrefab(GameObject ingredient, GameObject prefab)
     {
-        // Compare the prefab of the instantiated ingredient and the reference prefab
         return ingredient != null && ingredient.name.StartsWith(prefab.name);
     }
 
-    private IEnumerator SpawnProcessedVersion(IngredientTransformation transformation, Vector3 position)
+    private IEnumerator SpawnProcessedVersion(IngredientTransformation transformation)
     {
-        // Wait for the delay
-        yield return new WaitForSeconds(spawnDelay);
+        // Initialize progress bar
+        if (progressBar != null)
+        {
+            progressBar.gameObject.SetActive(true);
+            progressBar.localScale = initialScale; // Reset to full size
+        }
+
+        float elapsedTime = 0f;
+
+        // Update the progress bar during processing
+        while (elapsedTime < spawnDelay)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (progressBar != null)
+            {
+                float progress = elapsedTime / spawnDelay; // Progress from 0 to 1
+                progressBar.localScale = new Vector3(
+                    progressBar.localScale.x,
+                    progressBar.localScale.y,
+                    Mathf.Lerp(initialScale.z, 0, progress) // Decrease z-scale
+                );
+            }
+
+            yield return null;
+        }
 
         // Determine which version to spawn based on the processor type
         GameObject prefabToSpawn = null;
@@ -108,22 +137,20 @@ public class IngredientProcessor : MonoBehaviour
                 break;
         }
 
-        // Spawn the processed ingredient if a prefab is assigned
         if (prefabToSpawn != null)
         {
-            Debug.Log($"Spawning processed ingredient: {prefabToSpawn.name}");
-
-            GameObject processedObject = Instantiate(prefabToSpawn, position, Quaternion.identity);
-
-            // Assign the "Processed" layer to the spawned object
+            // Use the spawnLocation to instantiate the object at a set location
+            Vector3 spawnPosition = spawnLocation != null ? spawnLocation.position : transform.position;
+            GameObject processedObject = Instantiate(prefabToSpawn, spawnPosition, spawnLocation.rotation);
             processedObject.layer = LayerMask.NameToLayer(processedLayer);
         }
-        else
+
+        // Hide progress bar after processing
+        if (progressBar != null)
         {
-            Debug.LogWarning($"No prefab assigned for {processorType} for ingredient {transformation.ingredientPrefab.name}");
+            progressBar.gameObject.SetActive(false);
         }
 
-        // Release the lock to allow processing of the next ingredient
         isProcessing = false;
     }
 }

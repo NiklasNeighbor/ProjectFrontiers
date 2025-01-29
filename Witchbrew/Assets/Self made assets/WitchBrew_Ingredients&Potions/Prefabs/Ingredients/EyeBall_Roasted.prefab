@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7233410689486648560}
   - component: {fileID: 8563462489018732290}
   - component: {fileID: 3453544772219619434}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: EyeBall_Roasted
   m_TagString: Pickup
   m_Icon: {fileID: 0}
