@@ -30,6 +30,7 @@ public class MakePotion : MonoBehaviour
     public float ExpelForce = 200f;
 
     public TMP_Text failMessageText;
+    public TMP_Text ingredientText;
 
     [Header("VFX")]
     public GameObject failVFXPrefab;
@@ -64,16 +65,19 @@ public class MakePotion : MonoBehaviour
             if (CheckForIngredient(recipe.FirstIngredient) && !HasIngredient1)
             {
                 HasIngredient1 = true;
+                ingredientText.text = string.Format("1/3");
             }
 
             if (CheckForIngredient(recipe.SecondIngredient) && !HasIngredient2)
             {
                 HasIngredient2 = true;
+                ingredientText.text = string.Format("2/3");
             }
 
             if (CheckForIngredient(recipe.ThirdIngredient) && !HasIngredient3)
             {
                 HasIngredient3 = true;
+                ingredientText.text = string.Format("3/3");
             }
 
             //What happens when the ingredients were correct
