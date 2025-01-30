@@ -604,6 +604,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
+      propertyPath: potions.Array.data[0].questions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
       propertyPath: potions.Array.data[1].FirstIngredient.prep
       value: 3
       objectReference: {fileID: 0}
@@ -624,6 +629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
+      propertyPath: potions.Array.data[1].questions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
       propertyPath: potions.Array.data[2].FirstIngredient.prep
       value: 0
       objectReference: {fileID: 0}
@@ -636,6 +646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: potions.Array.data[2].ThirdIngredient.type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[2].questions.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
@@ -659,6 +674,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
+      propertyPath: potions.Array.data[3].questions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
       propertyPath: potions.Array.data[4].FirstIngredient.prep
       value: 3
       objectReference: {fileID: 0}
@@ -679,6 +699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
+      propertyPath: potions.Array.data[4].questions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
       propertyPath: potions.Array.data[5].FirstIngredient.prep
       value: 2
       objectReference: {fileID: 0}
@@ -690,6 +715,11 @@ PrefabInstance:
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
       propertyPath: potions.Array.data[5].ThirdIngredient.type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[5].questions.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
@@ -706,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: potions.Array.data[6].ThirdIngredient.type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[6].questions.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
@@ -729,6 +764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
+      propertyPath: potions.Array.data[7].questions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
       propertyPath: potions.Array.data[8].FirstIngredient.prep
       value: 3
       objectReference: {fileID: 0}
@@ -746,6 +786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: potions.Array.data[8].ThirdIngredient.type
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[8].questions.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
         type: 3}
@@ -836,6 +881,145 @@ PrefabInstance:
         type: 3}
       propertyPath: potions.Array.data[8].SecondIngredient.type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[0].questions.Array.data[0]
+      value: Hello, Could I please get the hair growing potion?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[0].questions.Array.data[1]
+      value: Hey, I'm bald by choice if you know what I mean.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[0].questions.Array.data[2]
+      value: Hello, one "Bald by choice please"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[1].questions.Array.data[0]
+      value: Hi, one "Dr. Love" please.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[1].questions.Array.data[1]
+      value: Hello, could I get the Love potion?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[1].questions.Array.data[2]
+      value: Yo, I wanna increase my rizz, pluh.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[2].questions.Array.data[0]
+      value: Heyyy, can you give me that "Energy Bang drink"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[2].questions.Array.data[1]
+      value: Hello, I need some energy boost, do you have something?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[2].questions.Array.data[2]
+      value: Hi, I would like the "Energy Bang drink".
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[3].questions.Array.data[0]
+      value: Hello, I want to order the "Magical pre-workout".
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[3].questions.Array.data[1]
+      value: H-Hi um, I need s-some strenght, I-I wanna g-grow my m-muscles.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[3].questions.Array.data[2]
+      value: Hey, Can i get the "Magical pre-workout" please? Not thatI need it!
+        It's for a friend.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[4].questions.Array.data[0]
+      value: Hello, I need some extra luck today!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[4].questions.Array.data[1]
+      value: Hey, Can I get the "Feelin' Lucky"? I wanna hit the casino tonight.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[4].questions.Array.data[2]
+      value: Hi, one "Feelin' Lucky" please!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[5].questions.Array.data[0]
+      value: Hey, one "I believe I can fly" please.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[5].questions.Array.data[1]
+      value: Red Bull didn't work, so gimme that "I belive I can fly".
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[5].questions.Array.data[2]
+      value: Hello, I ran out of fairy dust, so you know what I want.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[6].questions.Array.data[0]
+      value: Hello, Im feeling sick, one "Ibuproffeine" please.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[6].questions.Array.data[1]
+      value: H-hey, my mom says I should see a d-doctor, but I-I'm scared, p-please
+        help me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[6].questions.Array.data[2]
+      value: Hi, one "Ibuproffeine" please.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[7].questions.Array.data[0]
+      value: Hello, I need the "Infinite Sleeping Beauty" for, personal use...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[7].questions.Array.data[1]
+      value: Hey, can I please get the "Infinite sleeping Beauty"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[7].questions.Array.data[2]
+      value: I'm so sleepy, I think I want to sleep forever.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[8].questions.Array.data[0]
+      value: Hey, I need to steal- I mean can I get the "Background Character" potion
+        please?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[8].questions.Array.data[1]
+      value: Hello, I'm tired of saying I need go get milk... if you know what I
+        mean.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975064252462217490, guid: 83751ae886903a547be1e6e816983d4c,
+        type: 3}
+      propertyPath: potions.Array.data[8].questions.Array.data[2]
+      value: Hi, one "Background Character" please!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21841,7 +22025,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dfa06c09d2eb8d84198505f92cd16a7f, type: 3}
-  m_Color: {r: 0.91823894, g: 0.91823894, b: 0.91823894, a: 1}
+  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.57254905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -21860,8 +22044,8 @@ Transform:
   m_GameObject: {fileID: 770777324}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
-  m_LocalPosition: {x: -26.335833, y: 2.1165695, z: 2.8009205}
-  m_LocalScale: {x: 5.1861, y: 5.1861, z: 5.1861}
+  m_LocalPosition: {x: -26.335833, y: 2.02, z: 2.8009205}
+  m_LocalScale: {x: 8.963137, y: 8.963137, z: 8.963137}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1024035131}
@@ -30758,7 +30942,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25a0f17ee7092fe45a9e7fa7e44c05d2, type: 3}
-  m_Color: {r: 0.91823894, g: 0.91823894, b: 0.91823894, a: 1}
+  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.57254905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -30777,8 +30961,8 @@ Transform:
   m_GameObject: {fileID: 909737372}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.16883, y: 1.6965694, z: 24.020918}
-  m_LocalScale: {x: 5.7990403, y: 5.7990403, z: 5.7990403}
+  m_LocalPosition: {x: -26.16883, y: 1.96, z: 24.020918}
+  m_LocalScale: {x: 8.628392, y: 8.628392, z: 8.628392}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1024035131}
@@ -46243,7 +46427,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f0f4d632aaa9d34eaf830b20b89cce0, type: 3}
-  m_Color: {r: 0.76729554, g: 0.76729554, b: 0.76729554, a: 1}
+  m_Color: {r: 0.4943396, g: 0.4943396, b: 0.4943396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -74230,7 +74414,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d1e0dcb4a9539e542bf14838fcc4d65e, type: 3}
-  m_Color: {r: 0.91823894, g: 0.91823894, b: 0.91823894, a: 1}
+  m_Color: {r: 0.56831926, g: 0.5665859, b: 0.5698112, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -74249,8 +74433,8 @@ Transform:
   m_GameObject: {fileID: 1958775224}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -38.15583, y: 1.8495693, z: 22.153921}
-  m_LocalScale: {x: 5.567334, y: 5.567334, z: 5.567334}
+  m_LocalPosition: {x: -38.15583, y: 2.04, z: 22.153921}
+  m_LocalScale: {x: 8.913301, y: 8.913301, z: 8.913301}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1024035131}
