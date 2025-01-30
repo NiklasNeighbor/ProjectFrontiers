@@ -28,7 +28,52 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        InitializeMusicDictionary(); // Initialize the dictionary in Awake
         SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to the sceneLoaded event
+    }
+
+    private void InitializeMusicDictionary()
+    {
+        if (MusicList == null || MusicList.Length == 0)
+        {
+            Debug.LogError("MusicList is null or empty!");
+            return;
+        }
+
+        Debug.Log($"MusicList has {MusicList.Length} entries.");
+
+        musicDictionary = new Dictionary<string, AudioClip>();
+        foreach (MusicEntry entry in MusicList)
+        {
+            if (entry == null)
+            {
+                Debug.LogWarning("Found a null entry in MusicList!");
+                continue;
+            }
+
+            if (string.IsNullOrEmpty(entry.SongKey))
+            {
+                Debug.LogWarning("Found an entry with an empty or null SongKey!");
+                continue;
+            }
+
+            if (entry.Music == null)
+            {
+                Debug.LogWarning($"Music is null for SongKey: {entry.SongKey}");
+                continue;
+            }
+
+            if (!musicDictionary.ContainsKey(entry.SongKey))
+            {
+                musicDictionary.Add(entry.SongKey, entry.Music);
+            }
+            else
+            {
+                Debug.LogWarning($"Duplicate Key for the Music found in AudioManager: {entry.SongKey}");
+            }
+        }
+
+        Debug.Log($"musicDictionary has {musicDictionary.Count} entries.");
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -44,18 +89,46 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        if (MusicList == null || MusicList.Length == 0)
+        {
+            Debug.LogError("MusicList is null or empty!");
+            return;
+        }
+
+        Debug.Log($"MusicList has {MusicList.Length} entries.");
+
         musicDictionary = new Dictionary<string, AudioClip>();
         foreach (MusicEntry entry in MusicList)
         {
+            if (entry == null)
+            {
+                Debug.LogWarning("Found a null entry in MusicList!");
+                continue;
+            }
+
+            if (string.IsNullOrEmpty(entry.SongKey))
+            {
+                Debug.LogWarning("Found an entry with an empty or null SongKey!");
+                continue;
+            }
+
+            if (entry.Music == null)
+            {
+                Debug.LogWarning($"Music is null for SongKey: {entry.SongKey}");
+                continue;
+            }
+
             if (!musicDictionary.ContainsKey(entry.SongKey))
             {
                 musicDictionary.Add(entry.SongKey, entry.Music);
             }
             else
             {
-                Debug.LogWarning("Duplicate Key for the Music found in AudioManager! Ensure each Key is unique!");
+                Debug.LogWarning($"Duplicate Key for the Music found in AudioManager: {entry.SongKey}");
             }
         }
+
+        Debug.Log($"musicDictionary has {musicDictionary.Count} entries.");
 
         // Play the appropriate song for the current scene
         PlaySceneSong();
@@ -63,13 +136,33 @@ public class AudioManager : MonoBehaviour
 
     private void PlaySceneSong()
     {
+        if (sceneMusicConfigs == null || sceneMusicConfigs.Length == 0)
+        {
+            Debug.LogError("sceneMusicConfigs is null or empty!");
+            return;
+        }
+
         string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log($"Current scene: {currentSceneName}");
 
         // Find the song key for the current scene
         foreach (var config in sceneMusicConfigs)
         {
+            if (config == null)
+            {
+                Debug.LogWarning("Found a null entry in sceneMusicConfigs!");
+                continue;
+            }
+
             if (config.sceneName == currentSceneName)
             {
+                if (string.IsNullOrEmpty(config.songKey))
+                {
+                    Debug.LogWarning($"songKey is null or empty for scene: {currentSceneName}");
+                    return;
+                }
+
+                Debug.Log($"Playing song for scene: {currentSceneName}, SongKey: {config.songKey}");
                 PlaySong(config.songKey);
                 return;
             }
@@ -80,16 +173,33 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(string Key)
     {
-        if (musicDictionary.ContainsKey(Key))
+        if (TargetAudioSource == null)
         {
-            TargetAudioSource.Stop();
-            TargetAudioSource.clip = musicDictionary[Key];
-            TargetAudioSource.Play();
+            Debug.LogError("TargetAudioSource is null!");
+            return;
         }
-        else
+
+        if (musicDictionary == null)
+        {
+            Debug.LogError("musicDictionary is null!");
+            return;
+        }
+
+        if (!musicDictionary.ContainsKey(Key))
         {
             Debug.LogWarning("Song key not found: " + Key);
+            return;
         }
+
+        if (musicDictionary[Key] == null)
+        {
+            Debug.LogError($"AudioClip for key '{Key}' is null!");
+            return;
+        }
+
+        TargetAudioSource.Stop();
+        TargetAudioSource.clip = musicDictionary[Key];
+        TargetAudioSource.Play();
     }
 
     public bool IsPlaying(string songKey)
