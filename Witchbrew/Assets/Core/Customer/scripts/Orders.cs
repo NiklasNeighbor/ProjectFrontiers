@@ -97,7 +97,7 @@ public class Orders : MonoBehaviour
             Destroy(CurrentCustomer);
         }
         GameObject NextCustomer = CustomerPrefabs[Random.Range(0, CustomerPrefabs.Count)];
-        CurrentCustomer = Instantiate(NextCustomer, CustomerSpawnLocation.position, Quaternion.identity);
+        CurrentCustomer = Instantiate(NextCustomer, CustomerSpawnLocation.position, CustomerSpawnLocation.rotation);
     }
 
     public void UpdateTip()
