@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Runtime.CompilerServices;
 
 public class Orders : MonoBehaviour
 {
@@ -29,6 +30,15 @@ public class Orders : MonoBehaviour
     public AudioSource audioSource; // Reference to the existing AudioSource
 
     private Timer timer; // Reference to the Timer script
+
+    [Space(20)]
+    [Header("Customer Prefab Settings")]
+    [Tooltip("The location at which the customer spawns. Create an empty GameObject to put in here.")]
+    public Transform CustomerSpawnLocation;
+    [Tooltip("A list of all the possible Customer Prefabs that can be spawned")]
+    public List<GameObject> CustomerPrefabs;
+    [Tooltip("The currently active customer. Doesn't need to be touched.")]
+    public GameObject CurrentCustomer;
 
     // Start is called before the first frame update
     void Start()
@@ -74,8 +84,20 @@ public class Orders : MonoBehaviour
 
             OrderTimestamp = Time.time;
             TipAmount = MaxTip;
+            SpawnRandomCustomer();
 
         }
+    }
+
+    public void SpawnRandomCustomer()
+    {
+        
+        if (CurrentCustomer != null)
+        {
+            Destroy(CurrentCustomer);
+        }
+        GameObject NextCustomer = CustomerPrefabs[Random.Range(0, CustomerPrefabs.Count)];
+        CurrentCustomer = Instantiate(NextCustomer, CustomerSpawnLocation.position, Quaternion.identity);
     }
 
     public void UpdateTip()
