@@ -12,6 +12,7 @@ public class Orders : MonoBehaviour
     public TMP_Text OrderDisplay;
     public RawImage OrderImage;
     public TMP_Text CoinDisplay;
+    public TMP_Text SpeechBubbleDisplay; // New TMP_Text for customer questions
 
     public float OrderTimestamp;
     public float TipAmount;
@@ -65,8 +66,15 @@ public class Orders : MonoBehaviour
             {
                 OrderImage.texture = RequestedPotion.OrderTexture;
             }
+            if (SpeechBubbleDisplay != null && RequestedPotion.questions.Count > 0)
+            {
+                int questionIndex = Random.Range(0, RequestedPotion.questions.Count);
+                SpeechBubbleDisplay.text = RequestedPotion.questions[questionIndex];
+            }
+
             OrderTimestamp = Time.time;
             TipAmount = MaxTip;
+
         }
     }
 

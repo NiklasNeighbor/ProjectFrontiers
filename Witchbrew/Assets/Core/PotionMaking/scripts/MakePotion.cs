@@ -10,6 +10,7 @@ public class recipe
     public string RecipeName;
     public Texture2D OrderTexture;
     public GameObject PotionProduct;
+    public List<string> questions;
 
     public Ingredient FirstIngredient;
     public Ingredient SecondIngredient;
