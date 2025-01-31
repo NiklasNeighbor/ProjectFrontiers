@@ -42,6 +42,11 @@ public class Orders : MonoBehaviour
     [Tooltip("The currently active customer. Doesn't need to be touched.")]
     public GameObject CurrentCustomer;
 
+
+    public List<AudioClip> CustomerSounds;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
