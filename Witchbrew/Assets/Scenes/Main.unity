@@ -67530,6 +67530,9 @@ MonoBehaviour:
   - {fileID: 2676405798547930095, guid: 4b5b08dfd84e3c342b10a4e2ed977d48, type: 3}
   - {fileID: 958745142335686053, guid: 95aa05ec0ea0a884ab92946b57d2c7b4, type: 3}
   CurrentCustomer: {fileID: 0}
+  CustomerSounds:
+  - {fileID: 8300000, guid: 1886379fe9bf63147b6a009000885c7a, type: 3}
+  - {fileID: 8300000, guid: 6d28a2f62afe88c4bae23cf0c694ed7e, type: 3}
 --- !u!65 &1630214730
 BoxCollider:
   m_ObjectHideFlags: 0

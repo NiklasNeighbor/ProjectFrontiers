@@ -164,9 +164,11 @@ public class Orders : MonoBehaviour
                 TotalCoins = TotalCoins + totalGained;
                 CoinDisplay.text = TotalCoins.ToString();
 
-                if (correctPotionSFX != null && audioSource != null)
+                AudioClip randomClip = CustomerSounds[Random.Range(0, CustomerSounds.Count)];
+
+                if (randomClip != null && audioSource != null)
                 {
-                    audioSource.PlayOneShot(correctPotionSFX);
+                    audioSource.PlayOneShot(randomClip);
                 }
 
                 StartCoroutine(ShowCoinPopup(totalGained));
