@@ -68674,7 +68674,7 @@ MonoBehaviour:
   timerText: {fileID: 383606402}
   fillImage: {fileID: 2049181736}
   startTime: 240
-  TutorialPopUp: {fileID: 2016549615}
+  TutorialPopUp: {fileID: 1430110081}
   enableTimeIncrease: 1
   timeIncreaseAmount: 10
 --- !u!1 &1670430180
