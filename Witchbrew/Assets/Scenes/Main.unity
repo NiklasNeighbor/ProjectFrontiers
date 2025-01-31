@@ -7053,6 +7053,8 @@ GameObject:
   m_Component:
   - component: {fileID: 189247129}
   - component: {fileID: 189247130}
+  - component: {fileID: 189247133}
+  - component: {fileID: 189247132}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -7075,10 +7077,10 @@ RectTransform:
   - {fileID: 1450170022}
   m_Father: {fileID: 650464540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -86.36}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -314.9, y: -46.2}
+  m_SizeDelta: {x: 254.5, y: 495.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &189247130
 Animator:
@@ -7101,6 +7103,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &189247132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189247128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &189247133
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189247128}
+  m_CullTransparentMesh: 1
 --- !u!1001 &191192110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22173,7 +22213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &759256349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22243,7 +22283,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 10663110
+    rgba: 4288853190
   m_fontColor: {r: 0.77647066, g: 0.7058824, b: 0.63529414, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 1
@@ -24143,8 +24183,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogues.Array.data[1].videoClip
       value: 
-      objectReference: {fileID: 32900000, guid: dc3dc53e5abf63a42a403609ca814851,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[2].videoClip
@@ -55333,7 +55372,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450170021}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55342,7 +55381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -325.04, y: 85.8}
+  m_AnchoredPosition: {x: 118.45001, y: -197.65}
   m_SizeDelta: {x: 300, y: 335.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450170023
@@ -55357,8 +55396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae54a67bedc39be43b665a7434d77277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wiggleIntensity: 1
-  wiggleSpeed: 5
+  wiggleIntensity: 0.5
+  wiggleSpeed: 4
 --- !u!114 &1450170024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66380,7 +66419,7 @@ MonoBehaviour:
   TimePopup: {fileID: 759256351}
   OrderTimestamp: 0
   TipAmount: 0
-  TotalCoins: 0
+  TotalCoins: 500
   MaxTip: 100
   PotionPrice: 100
   correctPotionSFX: {fileID: 8300000, guid: 8597cfbbc0cef88429cf9bca1353efe9, type: 3}
@@ -67539,7 +67578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 383606402}
   fillImage: {fileID: 2049181736}
-  startTime: 240
+  startTime: 10
   TutorialPopUp: {fileID: 2016549615}
   enableTimeIncrease: 1
   timeIncreaseAmount: 10
@@ -69213,7 +69252,7 @@ PrefabInstance:
     - target: {fileID: 1422412435951007289, guid: c8e4c61b1b2fe33498fcd41fb0909da8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2333613560357692679, guid: c8e4c61b1b2fe33498fcd41fb0909da8,
         type: 3}
@@ -77456,7 +77495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2022581242
 RectTransform:
   m_ObjectHideFlags: 0
