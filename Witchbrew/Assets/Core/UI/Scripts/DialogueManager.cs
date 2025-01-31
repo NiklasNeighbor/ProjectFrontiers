@@ -20,9 +20,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.05f;
 
     [Header("Audio References")]
-    public AudioSource backgroundMusic;
-    public AudioClip dialogueMusic;
-    public AudioClip defaultMusic;
+    public AudioSource dialogueAudioSource; 
 
     [Header("Backgrounds")]
     public GameObject[] backgrounds; // Array of background GameObjects
@@ -45,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         public GameObject backgroundGameObject; // Background GameObject for this dialogue
         public GameObject specificGameObject; // gameobject that should be activated for this dialogue
         public bool keepActiveAfterDialogue;
+        public AudioClip dialogueSound;
     }
 
     public Dialogue[] dialogues;
@@ -127,6 +126,13 @@ public class DialogueManager : MonoBehaviour
             if (activeGameObject != null)
                 activeGameObject.SetActive(true);
 
+            if (dialogueAudioSource != null && dialogues[currentDialogueIndex].dialogueSound != null)
+            {
+                dialogueAudioSource.Stop(); // Stop any previous sound
+                dialogueAudioSource.clip = dialogues[currentDialogueIndex].dialogueSound;
+                dialogueAudioSource.Play();
+            }
+
             // Play video if available
             VideoClip videoClip = dialogues[currentDialogueIndex].videoClip;
             if (videoPlayer != null)
@@ -156,10 +162,9 @@ public class DialogueManager : MonoBehaviour
         if (dialogueUI != null)
             dialogueUI.SetActive(false);
 
-        if (backgroundMusic != null && defaultMusic != null)
+        if (dialogueAudioSource != null)
         {
-            backgroundMusic.clip = defaultMusic;
-            backgroundMusic.Play();
+            dialogueAudioSource.Stop();
         }
 
         if (videoPlayer != null)
