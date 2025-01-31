@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public MusicEntry[] MusicList;
     private Dictionary<string, AudioClip> musicDictionary;
     public AudioSource TargetAudioSource;
+    public AudioSource BadEndSource;
 
     public SceneMusicConfig[] sceneMusicConfigs; // Array of scene-specific music configurations
 

@@ -1105,8 +1105,9 @@ MonoBehaviour:
   - SongKey: tempOutside
     Music: {fileID: 8300000, guid: e149f9dace7c19345bf4ffde6cafa703, type: 3}
   - SongKey: tempStart
-    Music: {fileID: 8300000, guid: 8665e2ee54e181a4396bda48e5067733, type: 3}
+    Music: {fileID: 8300000, guid: 14f7c76d99188aa4c9cd6b6ffdd1bd3a, type: 3}
   TargetAudioSource: {fileID: 1137127353}
+  BadEndSource: {fileID: 0}
   sceneMusicConfigs:
   - {fileID: 11400000, guid: 1557867275324414aadc274fad405c06, type: 2}
   - {fileID: 11400000, guid: 0e9cfed563ccb03438f29c063a2ae6fe, type: 2}
