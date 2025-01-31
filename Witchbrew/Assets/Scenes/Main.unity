@@ -7280,7 +7280,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7e9d65f1d6720d841aabe60454e98331, type: 3}
   - {fileID: 21300000, guid: 39b68f83e13784c41b1ddc348bc96829, type: 3}
   - {fileID: 21300000, guid: b8915760021bf0146b6dfa54b979f24b, type: 3}
-  - {fileID: 21300000, guid: f8d932466b1ebdf43aaf678d1418853e, type: 3}
+  - {fileID: 21300000, guid: 8a400e8cfc596fa42b390e68f9d55038, type: 3}
   isRecipeBookOpen: 0
 --- !u!4 &193827208
 Transform:
@@ -24208,17 +24208,17 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.size
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[1].lines.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[2].lines.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -24268,7 +24268,7 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[1].text
-      value: I've always dreamt of having a cat.
+      value: I've always dreamt of having a cute cat to cherish.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -24283,32 +24283,32 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[4].text
-      value: I immediately wanted to take him home.
+      value: I immediately wanted to take him home, But there was one problem...
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[5].text
-      value: But there was one problem...
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
-        type: 3}
-      propertyPath: dialogues.Array.data[0].lines.Array.data[6].text
       value: THE ADOPTION FEE!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
-      propertyPath: dialogues.Array.data[0].lines.Array.data[7].text
+      propertyPath: dialogues.Array.data[0].lines.Array.data[6].text
       value: It's too high, and I don't have enough coins.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
+      propertyPath: dialogues.Array.data[0].lines.Array.data[7].text
+      value: But I'm not going to just give up and watch someone else take him away.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[8].text
-      value: But I'm not going to just give up.
+      value: Maxwell deservers a happy home, and I'm sure I would be the right match!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[9].text
-      value: Maxwell deservers a happy home, and I'm sure I would be the right match!
+      value: That's why I decided to rush to work and open my store immediately.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -24318,17 +24318,27 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[1].lines.Array.data[1].text
-      value: I did it!
+      value: I did it, I made enough money!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[1].lines.Array.data[2].text
-      value: I earned enough money to adopt Maxwell
+      value: Now I can take Maxwell home, and take care of him.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[1].lines.Array.data[3].text
-      value: I'll take him home right away!
+      value: 'I can''t wait to take him home and show him around. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[1].lines.Array.data[4].text
+      value: I'll make sure he's a happy kitten and feels safe.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[1].lines.Array.data[5].text
+      value: I love you Maxwell!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -24338,27 +24348,47 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[2].lines.Array.data[1].text
-      value: It seems like u didn't earn enough money...
+      value: Nooooo, I wan't able to make enough money.
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[2].lines.Array.data[2].text
-      value: Maxwell is now sold off to another owner...
+      value: I was desprate and ran back to see if I could compromise the price.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[3].text
+      value: However, as I walked there I saw someone else taking him away.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[4].text
+      value: Well, I can't blame them, Maxwell is just too cute.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[5].text
+      value: I just hope that he'll be happy and taken care of well.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[6].text
+      value: I'll miss you Maxwell!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.data[10].text
-      value: That's why I decided to rush to work and open my store immediately.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
-        type: 3}
-      propertyPath: dialogues.Array.data[0].lines.Array.data[11].text
       value: ' So that I can get enough money before aynone else takes him!'
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
-      propertyPath: dialogues.Array.data[0].lines.Array.data[12].text
+      propertyPath: dialogues.Array.data[0].lines.Array.data[11].text
       value: I felt a connection with him, he's the perfect kitten.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].lines.Array.data[12].text
+      value: I'll try my best at work, this is for you Maxwell!
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
@@ -24433,6 +24463,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
+      propertyPath: dialogues.Array.data[1].lines.Array.data[4].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[1].lines.Array.data[5].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
       propertyPath: dialogues.Array.data[2].lines.Array.data[0].characterSprite
       value: 
       objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
@@ -24446,6 +24488,30 @@ PrefabInstance:
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[2].lines.Array.data[2].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[3].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[4].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[5].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
+        type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].lines.Array.data[6].characterSprite
       value: 
       objectReference: {fileID: 21300000, guid: 2611885777b16f240957252045766f5e,
         type: 3}
@@ -66419,7 +66485,7 @@ MonoBehaviour:
   TimePopup: {fileID: 759256351}
   OrderTimestamp: 0
   TipAmount: 0
-  TotalCoins: 500
+  TotalCoins: 0
   MaxTip: 100
   PotionPrice: 100
   correctPotionSFX: {fileID: 8300000, guid: 8597cfbbc0cef88429cf9bca1353efe9, type: 3}
@@ -67578,7 +67644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 383606402}
   fillImage: {fileID: 2049181736}
-  startTime: 10
+  startTime: 240
   TutorialPopUp: {fileID: 2016549615}
   enableTimeIncrease: 1
   timeIncreaseAmount: 10
