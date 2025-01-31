@@ -24204,7 +24204,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogues.Array.data[0].dialogueSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 2ee3673abfb4015468639e886d60e9dc, type: 3}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[1].characterName
@@ -24212,9 +24212,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
+      propertyPath: dialogues.Array.data[1].dialogueSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 890535cc58528864fb37b696a40ee590, type: 3}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
       propertyPath: dialogues.Array.data[2].characterName
       value: Bad Ending
       objectReference: {fileID: 0}
+    - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
+        type: 3}
+      propertyPath: dialogues.Array.data[2].dialogueSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d149c7260d89474b9d5b436294071a9, type: 3}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: dialogues.Array.data[0].lines.Array.size
@@ -67658,7 +67668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 383606402}
   fillImage: {fileID: 2049181736}
-  startTime: 240
+  startTime: 5
   TutorialPopUp: {fileID: 2016549615}
   enableTimeIncrease: 1
   timeIncreaseAmount: 10
