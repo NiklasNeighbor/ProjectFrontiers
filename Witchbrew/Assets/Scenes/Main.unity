@@ -14937,6 +14937,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487034291}
   m_CullTransparentMesh: 1
+--- !u!1 &489193195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 551065372614750900, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507504344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &489600373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24143,7 +24149,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BadEndVideo
       value: 
-      objectReference: {fileID: 680407496}
+      objectReference: {fileID: 0}
     - target: {fileID: 4966616452546696172, guid: f1f27811b48920240b3b4eba00ecdbd8,
         type: 3}
       propertyPath: typingSpeed
@@ -25097,6 +25103,11 @@ PrefabInstance:
     - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
         type: 3}
       propertyPath: m_TimeUpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+        type: 3}
+      propertyPath: m_WaitForFirstFrame
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -57380,13 +57391,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
         type: 3}
+      propertyPath: m_SkipOnDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+        type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
         type: 3}
       propertyPath: m_PlaybackSpeed
-      value: 0.65
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
         type: 3}
@@ -57396,12 +57412,21 @@ PrefabInstance:
     - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
         type: 3}
       propertyPath: m_TimeUpdateMode
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+        type: 3}
+      propertyPath: m_WaitForFirstFrame
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 551065372614750900, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1534781110}
   m_SourcePrefab: {fileID: 100100000, guid: 80b474ea45f2d2e459b11f6eee02c1a8, type: 3}
 --- !u!4 &1510322374 stripped
 Transform:
@@ -58063,6 +58088,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1507504344}
   m_PrefabAsset: {fileID: 0}
+--- !u!328 &1534781109 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 8751268634503316244, guid: 80b474ea45f2d2e459b11f6eee02c1a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1507504344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1534781110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489193195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02919cc5319a0aa4ebf821d237c42b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1534781109}
 --- !u!1001 &1538904997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72539,7 +72583,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
