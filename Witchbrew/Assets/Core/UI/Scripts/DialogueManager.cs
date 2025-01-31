@@ -27,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Backgrounds")]
     public GameObject[] backgrounds; // Array of background GameObjects
 
+    public GameObject endingObject;
+
     [System.Serializable]
     public class Line
     {
@@ -176,6 +178,15 @@ public class DialogueManager : MonoBehaviour
         {
             activeGameObject.SetActive(false);
             activeGameObject = null;
+        }
+
+        if (currentDialogueIndex == 1 && endingObject != null) // Good ending
+        {
+            endingObject.SetActive(true);
+        }
+        else if (currentDialogueIndex == 2 && endingObject != null) // Bad ending
+        {
+            endingObject.SetActive(true);
         }
 
         if (timer != null)

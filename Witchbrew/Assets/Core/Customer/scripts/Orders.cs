@@ -13,7 +13,9 @@ public class Orders : MonoBehaviour
     public TMP_Text OrderDisplay;
     public RawImage OrderImage;
     public TMP_Text CoinDisplay;
-    public TMP_Text SpeechBubbleDisplay; // New TMP_Text for customer questions
+    public TMP_Text SpeechBubbleDisplay;
+    public TMP_Text CoinPopup;
+    public TMP_Text TimePopup;
 
     public float OrderTimestamp;
     public float TipAmount;
@@ -109,6 +111,42 @@ public class Orders : MonoBehaviour
         }
     }
 
+    private IEnumerator ShowCoinPopup(float amountGained)
+    {
+        if (CoinPopup != null)
+        {
+            // Set the text to show the amount gained with a plus sign
+            CoinPopup.text = "+" + amountGained.ToString();
+
+            // Enable the CoinPopup
+            CoinPopup.gameObject.SetActive(true);
+
+            // Wait for 2 seconds
+            yield return new WaitForSeconds(2f);
+
+            // Disable the CoinPopup
+            CoinPopup.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator ShowTimePopup(float timeIncrease)
+    {
+        if (TimePopup != null)
+        {
+            // Set the text to show the time increase with a plus sign
+            TimePopup.text = "+" + timeIncrease.ToString() + " seconds";
+
+            // Enable the TimePopup
+            TimePopup.gameObject.SetActive(true);
+
+            // Wait for 2 seconds
+            yield return new WaitForSeconds(2f);
+
+            // Disable the TimePopup
+            TimePopup.gameObject.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         MonoPotion PresentedPotion = other.gameObject.GetComponent<MonoPotion>();
@@ -117,24 +155,24 @@ public class Orders : MonoBehaviour
             if (PresentedPotion.recipe == RequestedPotion)
             {
                 TipAmount = Mathf.Round(TipAmount);
-                TotalCoins = TotalCoins + PotionPrice + TipAmount;
+                float totalGained = PotionPrice + TipAmount; // Calculate the total amount gained
+                TotalCoins = TotalCoins + totalGained;
                 CoinDisplay.text = TotalCoins.ToString();
 
-                // Increase time if the potion is correct
-                if (timer != null)
-                {
-                    timer.IncreaseTime(timer.timeIncreaseAmount);
-                }
-
-                // Play the correct potion sound effect
                 if (correctPotionSFX != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(correctPotionSFX);
                 }
+
+                StartCoroutine(ShowCoinPopup(totalGained));
+
+                if (timer != null)
+                {
+                    StartCoroutine(ShowTimePopup(timer.timeIncreaseAmount));
+                }
             }
             else
             {
-                // Play the wrong potion sound effect
                 if (wrongPotionSFX != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(wrongPotionSFX);

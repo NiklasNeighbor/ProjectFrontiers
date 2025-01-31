@@ -30,6 +30,7 @@ public class MakePotion : MonoBehaviour
 
     public TMP_Text failMessageText;
     public TMP_Text ingredientText;
+    public TMP_Text CoinPopup;
 
     [Header("VFX")]
     public GameObject failVFXPrefab;
