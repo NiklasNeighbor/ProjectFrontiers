@@ -150,5 +150,5 @@ MonoBehaviour:
   InteractionManager: {fileID: 0}
   vfxPrefab: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}
-  pickUpSound: {fileID: 8300000, guid: e933008375b35f5488708e1809ea41bd, type: 3}
-  sfxVolume: 3
+  pickUpSound: {fileID: 8300000, guid: dc570a86a2db4de4bb6a583aa493d073, type: 3}
+  sfxVolume: 0.12
